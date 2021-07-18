@@ -1,0 +1,46 @@
+Task statement:
+1. Implement sorting in C++ for an array of objects in
+accordance with the option.
+2. Overload the comparison operators (&gt;, & lt;, & gt;=, & lt;=) to compare objects.
+3. The input data for sorting the array must be read from
+external sources: a text file, an MS Excel file, MS Access, data
+from a DBMS (any one to choose from).
+4. Select 7-10 data sets for sorting with dimensions from 100 and more.
+Detect (programmatically) the sorting time by each algorithm. Use the
+obtained points to plot graphs of the dependence of the sorting time
+from the dimension of the array for each of the sorting algorithms on the same
+coordinate axis. Make a conclusion about in which case, which of the methods
+is better to use. Graphs can be built in any of the application
+programs (MS Excel, Matlab, MathCad, etc.).
+5. Make a report containing the title page, the program code with
+the specifications of each method and detailed comments, graphs
+sorting speeds and conclusions.
+c) Sorting by simple inserts;
+d) Shaker-sorting
+3) An array of accounting data: Full name of the employee, position, department,
+monthly salary (comparison by fields - employee's full name, salary)
+
+
+Формулировка задания:
+1. Реализовать на языке С++ сортировки для массива объектов в
+соответствии с вариантом.
+2. Перегрузить операторы сравнения (&gt;, &lt;, &gt;=, &lt;=) для сравнения объектов.
+3. Входные данные для сортировки массива обязательно считывать из
+внешних источников: текстовый файл, файл MS Excel, MS Access, данные
+из СУБД (любое на выбор).
+4. Выбрать 7-10 наборов данных для сортировки размерности от 100 и более.
+Засечь (программно) время сортировки каждым алгоритмом. По
+полученным точкам построить графики зависимости времени сортировки
+от размерности массива для каждого из алгоритмов сортировки на одной
+оси координат. Сделать вывод о том, в каком случае, какой из методов
+лучше применять. Графики можно строить в любой из прикладных
+программ (MS Excel, Matlab, MathCad и т.д.).
+5. Сделать отчет, содержащий титульный лист, код программы со
+спецификациями каждого метода и подробными комментариями, графики
+скоростей сортировок и выводы.
+
+в) Сортировка простыми вставками;
+г) Шейкер-сортировка
+3) Массив данных бухгалтерии: ФИО служащего, должность, подразделение,
+месячная зарплата (сравнение по полям - ФИО служащего, зарплата)
+
