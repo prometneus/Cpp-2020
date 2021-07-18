@@ -1,0 +1,16 @@
+Task statement:
+Write a div function that should calculate the result of dividing two integers.
+In the main function, enter two integers and output their incomplete quotient
+if the divisor is not zero, and an error message if it is equal.
+1) use the error code return
+
+2) use the exclusion mechanism and using the object
+
+Постановка задачи:
+Написать функцию div, которая должна вычислять результат деления двух целых чисел.
+В функции main ввести два целых числа и вывести их неполное частное, если делитель не
+равен нулю, и сообщение об ошибке, если равен.
+1) используйте возврат кода ошибки
+
+2) используют механизм исключения и использованием
+объекта
