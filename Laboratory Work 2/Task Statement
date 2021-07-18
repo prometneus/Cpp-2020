@@ -1,0 +1,53 @@
+Task statement:
+1. Define the template of the container class.
+2. Implement constructors, destructor, I / O operations, assignment operation.
+3. Overload the operations specified in the option.
+4. Instantiate a template for standard data types (int, float, double).
+5. Write a testing program that illustrates the execution of operations for a container
+containing elements of standard data types.
+6. Implement a custom class
+7. Overload the I / O operations for the user class.
+8. Overload the operations necessary to perform the operations of the container class.
+9. Instantiate a template for a custom class.
+10. Write a testing program that illustrates the execution of operations for a container
+containing elements of a user class.
+
+Queue:
+a) Initializing the queue
+b) Adding a node to the queue
+c) Checking for emptiness
+d) Removing an item from the queue
+e) Determining the size of the queue
+f) Defining the top element without deleting it
+Custom class:
+A custom class Money for working with monetary amounts. The number must be
+represented by two fields: the long type for rubles and the int type for kopecks. 
+The fractional part of the number when displayed on the screen must be separated
+from the integer part by a comma.
+
+
+Постановка задачи:
+1. Определить шаблон класса-контейнера.
+2. Реализовать конструкторы, деструктор, операции ввода-вывода, операцию присваивания.
+3. Перегрузить операции, указанные в варианте.
+4. Инстанцировать шаблон для стандартных типов данных (int, float, double).
+5. Написать тестирующую программу, иллюстрирующую выполнение операций для контейнера,
+содержащего элементы стандартных типов данных.
+6. Реализовать пользовательский класс
+7. Перегрузить для пользовательского класса операции ввода-вывода.
+8. Перегрузить операции необходимые для выполнения операций контейнерного класса.
+9. Инстанцировать шаблон для пользовательского класса.
+10. Написать тестирующую программу, иллюстрирующую выполнение операций для контейнера,
+содержащего элементы пользовательского класса.
+
+Очередь элементов:
+a) Инициализация очереди
+b) Добавление узла в очередь
+c) Проверка на пустоту
+d) Удаление элемента из очереди
+e) Определение размера очереди
+f) Определение верхнего элемента без его удаления
+Пользовательский класс:
+Пользовательский класс Money для работы с денежными суммами. Число должно быть
+представлено двумя полями: типа long для рублей и типа int для копеек. 
+Дробная часть числа при выводе на экран должна быть отделена от целой части запятой.
