@@ -1,0 +1,32 @@
+Task statement:
+Design a calculate () function that takes two values of the double type and a pointer
+to a function that takes two arguments of the double type and returns the double value.
+The calculate() function must also have the double type and return the value calculated by the function
+that is specified by the pointer using the double argument of the calculate () function. For example, suppose
+that there is the following definition of the add () function:
+double add (double a, double b) {
+return a + b;
+}
+The following function call should force calculate() to pass the values 2.5 and 10.4
+to the add() function and return its result (12.9):
+double q = calculate(2.5, 10.4, add);
+Use these functions in the program and at least one additional, which is similar to add().
+The program should implement a loop that allows the user to enter pairs of numbers. For
+each pair, calculate () must call add () and at least one other function of this kind.
+
+
+Формулировка задания:
+Спроектируйте функцию calculate(), которая принимает два значения типа double и указатель
+на функцию, принимающую два аргумента типа double и возвращающую значение double.
+Функция calculate() также должна иметь тип double и возвращать значение, вычисленное функцией,
+которая задана указателем, используя аргумент double функции calculate(). Например, предположим,
+что имеется следующее определение функции add():
+double add(double a, double b) {
+  return a + b;
+  }
+Приведённый ниже вызов функции должен заставить calculate() передать значения 2.5 и 10.4
+функции add() и вернуть её результат (12.9):
+double q = calculate(2.5, 10.4, add);
+Используйте в программе эти функции и ещё хотя бы одну дополнительную, которая подобна add().
+В программе должен быть реализован цикл, позволяющий пользователю вводить пары чисел. Для
+каждой пары calculate() должна вызвать add() и ещё хотя бы одну функцию такого рода.
