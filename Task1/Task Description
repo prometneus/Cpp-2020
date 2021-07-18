@@ -1,0 +1,26 @@
+Task statement:
+Imagine that you are in charge of the pizza market analysis service. You
+need information about each pizza:
+Name-pizza manufacturer
+Pizza diameter
+Pizza Weight
+Manufacturer's city
+Develop a structure that can contain all this information and
+write a program that uses a structure variable of this type.
+The program should request each of the listed
+indicators from the user and then display the entered information. Use cin and cout,
+string, and the new operation to place the structure in free storage.
+
+
+Формулировка задания:
+Представьте, что вы заведуете службой анализа рынка пиццы. О каждой пицце вам
+нужна информация:
+Наименование – производитель пиццы
+Диаметр пиццы
+Вес пиццы
+Город производителя
+Разработайте структуру, которая может содержать всю эту информацию и
+напишите программу, которая использует структурную переменную этого типа.
+Программа должна запрашивать у пользователя каждый из перечисленных
+показателей и затем отображать введенную информацию. Используйте cin и cout,
+string, а также операцию new для размещения структуры в свободном хранилище.
