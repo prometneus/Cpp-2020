@@ -1,0 +1,30 @@
+Task statement:
+Create a class description for a vector defined
+by the float coordinates of its ends in three-dimensional space. Provide
+operations of addition and subtraction of vectors to obtain a new
+vector (sum or difference), calculation of the scalar product of two vectors,
+the length of the vector, the cosine of the angle between the vectors.
+
+Requirements:
+
+The class must contain at least 2 constructors and destructors
+All operations must be defined
+The operation of adding and subtracting vectors should return
+a new vector
+All operations must be tested
+
+Формулировка задания:
+Составить описание класса для вектора, заданного координатами
+типа float его концов в трехмерном пространстве. Обеспечить
+операции сложения и вычитания векторов с получением нового
+вектора (суммы или разности), вычисления
+скалярного произведения двух векторов, длины вектора, косинуса
+угла между векторами.
+
+Требования:
+
+Класс должен содержать минимум 2 конструктора и деструктор
+Все операции должны быть определены
+Операция сложения и вычитания векторов должны возвращать
+новый вектор
+Все операции должны быть протестированы
