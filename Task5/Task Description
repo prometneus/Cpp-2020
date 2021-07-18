@@ -1,0 +1,32 @@
+Task statement:
+a) Create a simple hierarchy of the Shape class of shapes and generate three classes
+Circle, Square, and Triangle.
+Add a virtual Area () function in the base class that finds the area of the shape,
+and redefine it in derived classes. Create an array of pointers to Shape objects and
+call the Area() method through pointers to the base class to check the behavior of 
+virtual functions. Add a dynamic char array with the shape name to the Shape class
+and to one of the derived classes. Redefine the assignment operator and the copy constructor in
+the generated classes.
+
+b) Change the Area() function to a pure virtual function.
+Try creating an object of the Shape type. Try calling a pure
+virtual function in the constructor. Leaving the function pure
+virtual, give it a definition.
+
+
+Постановка задачи:
+а) Создать простую иерархию класса фигур Shape и породить три класса
+Circle, Square, and Triangle.
+Добавить в базовом классе виртуальную функцию Area(), которая находит
+площадь фигуры, и переопределить в производных классах. Создать массив
+указателей на объекты Shape и вызвать метод Area() через указатели на
+базовый класс, чтобы проверить поведение виртуальных функций.
+Добавить в класс Shape и в один из производных классов
+динамический массив char с названием фигуры.
+Переопределить оператор присваивания и конструктор копирования в
+порожденных классах.
+
+б) Изменить функцию Area() на чистую виртуальную функцию.
+Попробовать создать объект типа Shape. Попробовать вызвать чистую
+виртуальную функцию в конструкторе. Оставив функцию чистой
+виртуальной, дать ей определение.
