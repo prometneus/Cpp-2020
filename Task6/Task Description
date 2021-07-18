@@ -1,0 +1,78 @@
+Task statement:
+a) Develop the Time, Date and Event classes. The interfaces of the Time and Date classes
+are presented below.
+class Time
+{ //Time class
+public:
+  Time();
+  Time(int, int);
+  void setTime(int, int);
+    void settime(int&, int&);
+  void printTime();
+private:
+  int hr;
+  int min;
+};
+
+class Date
+{ //Date class
+public:
+  Date();
+  Date(int, int, int);
+    void setdata(int, int, int);
+    void getdata(int&, int&, int&);
+    void print Date();
+private:
+  int month;
+  int day;
+  int year;
+};
+The Event class must include the Time and Date classes, and also
+contain the "Event Name" field.
+
+Add the implementation of the methods of the Time, Date and Event classes.
+The Event methods include the method for setting
+event data and the method for displaying it on the screen.
+
+b) Rewrite the program so that the Event class
+inherits the Time and Date classes closed, and does not include them.
+
+
+Постановка задачи:
+а) Разработайте классы Time, Date и Event. Интерфейсы классов Time и Date
+представлены ниже.
+class Time
+{ //Time class
+public:
+  Time();
+  Time(int, int);
+  void setTime(int, int);
+  void getTime(int&, int&);
+  void printTime();
+private:
+  int hr;
+  int min;
+};
+
+class Date
+{ //Date class
+public:
+  Date();
+  Date(int, int, int);
+  void setDate(int, int, int);
+  void getDate(int&, int&, int&);
+  void printDate();
+private:
+  int month;
+  int day;
+  int year;
+};
+Класс Event должен включать классы Time и Date, а также
+содержать поле «Название события».
+
+Допишите реализацию методов классов Time, Date и Event.
+К методам Event можно отнести метод установки данных о
+событии и метод вывода на экран.
+
+б) Перепишите программу так, чтобы классы класс Event
+закрыто наследовал классы Time и Date, а не включал их.
