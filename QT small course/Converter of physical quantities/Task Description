@@ -1,0 +1,7 @@
+Task statement:
+Create an application with a graphical interface that includes QLabel, QLineEdit, QPushButton objects
+that converts one physical unit of measurement to another (for example, miles to km, feet to meters, pounds to grams, etc.).
+
+Описание задания:
+Создайте приложение с графическим интерфейсом, включащее объекты QLabel, QLineEdit, QPushButton,
+переводящее одни физические единицы измерения в другие (например, мили в км, футы в метры, фунты в граммы, и т.д.).
