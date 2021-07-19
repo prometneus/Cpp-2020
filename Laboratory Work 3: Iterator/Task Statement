@@ -1,0 +1,39 @@
+Task statement:
+Implement a container of a doubly connected queue -- Deque, implement a read-write Iterator class for the container to it.
+Methods must be defined for the Iterator:
+1) Moving to the next node (postfix and prefix increment)
+2) Checking the equality of two iterators (operator==)
+3) Checking the inequality of two iterators (operator!=)
+4) Getting the value of the current node (operator*)
+For a Deque container:
+1) iterator begin () - returns the iterator and the first element of the container.
+2) iterator end () - returns the iterator to the end of the container.
+3) iterator insert(iterator pos, const T&amp; amp; key) - inserts the key element at the position
+indicated by the pos iterator (before the element pointed to by pos) and
+returns the iterator to the inserted object.
+4) iterator erase – iterator pos) - removes the element pointed to by the pos iterator and
+returns the iterator following the deleted object.
+5) iterator erase(iterator begin, iterator end) - removes elements from the iterator begin to (not
+including) end, returns the iterator.
+6) Add a method for checking for emptiness empty() so that it refers to iterators.
+7) The swap method, which exchanges the contents of two containers.
+
+Постановка задачи:
+Реализовать контейнер двусвязной очереди Deque, к нему реализовать класс Итератор чтения-записи для контейнера.
+Для Итератора должны быть определены методы:
+1) Переход к следующему узлу (постфиксный и префиксный инкремент)
+2) Проверка равенства двух итераторов (operator==)
+3) Проверка неравенства двух итераторов (operator!=)
+4) Получение значения текущего узла (operator*)
+Для контейнера Deque:
+1) iterator begin() – возвращает итератор и первый элемент контейнера.
+2) iterator end() – возвращает итератор на конец контейнера.
+3) iterator insert(iterator pos, const T&amp;amp; key) – вставляет элемент key в позицию, на
+которую указывает итератор pos (перед элементом, на который указывает pos) и
+возвращает итератор на вставленный объект.
+4) iterator erase(iterator pos) – удаляет элемент, на который указывает итератор pos и
+возвращает итератор следующий за удаленным объект.
+5) iterator erase(iterator begin, iterator end) – удаляет элементы от итератора begin до (не
+включая) end, возвращает итератор.
+6) Добавить метод проверки на пустоту empty() так, чтобы он обращался к итераторам.
+7) Метод swap, обмениваюший содержимое двух контейнеров.
