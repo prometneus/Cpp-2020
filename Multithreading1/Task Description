@@ -1,0 +1,12 @@
+Task statement:
+Imagine a game in which the hero accumulates coins. One coin accumulates in 3 seconds.
+As soon as 15 coins are collected, they are debited and the construction of the farm begins, which takes 1 minute.
+The action takes place until 5 farms are built.
+Implement a program in which one thread saves coins, the other spends.
+
+
+Описание задания:
+Представим игру, в которой герой копит монеты. Одна монета накапливается за 3 секунды.
+Как только набирается 15 монет, они списываются и начинается строительство фермы, которое занимает 1 минуту.
+Действие происходит до тех пор, пока не будет построено 5 ферм.
+Реализуйте программу, в которой один поток копит монеты, другой — тратит.
