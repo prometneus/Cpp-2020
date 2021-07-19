@@ -1,1 +1,33 @@
-.
+Task statement:
+Required interface:
++ Calculated(T0 : int, dT : int): double -- determine the pressure change at a given
+initial temperature T0 and the temperature change dT
++ ModifMass(dm : double): void -- change the mass of gas in the tank by the value dm
++ getData() : string -- returns a string with data about the object
+
+Adaptable class:
+Gas cylinder. Attributes:
+Volume : double -- the volume of the tank, m^3
+Mass : double -- gas mass, kg
+Molar: double -- molar mass of gas, kg/mol
+Operations:
++ getPressure(T : and): double -- determine the pressure in the cylinder at a given gas temperature T
++ Amount Of Matter (): double -- determine the amount of matter
++ toString() : string -- returns a string with data about the object
+
+Формулировка задачи:
+Требуемый интерфейс:
++ CalculateDp(T0 : int, dT : int) : double -- определить изменение давления при заданной
+начальной температуре T0 и изменении температуры dT
++ ModifMass(dm : double) : void -- изменить массу газа в баллоне на величину dm
++ GetData() : string -- возвращает строку с данными об объекте
+
+Адаптируемый класс:
+Баллон с газом. Атрибуты:
+Volume : double -- объём баллона, м^3
+Mass : double -- масса газа, кг
+Molar : double -- молярная масса газа, кг/моль
+Операции:
++ GetPressure(T : ind) : double -- определить давление в баллоне при заданной температуре газа T
++ AmountOfMatter() : double -- определить количество вещества
++ ToString() : string -- возвращает строку с данными об объекте
