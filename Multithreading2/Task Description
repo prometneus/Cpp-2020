@@ -1,0 +1,8 @@
+Task statement:
+Write a program that processes n lines located in n files, the names of which are specified by the filenames array.
+Threads read files in parallel, and then output words in turn to a single file or to the console.
+
+
+Описание задания:
+Написать программу, обрабатывающих n строк, находящихся в n файлах, имена которых заданы массивом filenames.
+Потоки считывают файлы параллельно, а затем выводят слова по очереди в один файл или в консоль.
