@@ -1,0 +1,18 @@
+Task statement:
+Create a Date class for working with dates in the format " day.month. year".
+The date is represented by a structure with fields of the unsigned int type for the year, month and day.
+Define a default constructor, a constructor that accepts 3 numbers as parameters, a constructor
+that accepts a string of the form " day.month.year", copy constructor, destructor, assignment operator.
+Overload the operators of adding an integer number of days "+", subtracting an integer number of days " -", subtracting from one date to another,
+output the number of days between dates, comparisons for equality "==", the operator "< < " for working with the standard output stream.
+To demonstrate the work of the program using the example: Date bday ("21.05.1995”), today(2,4,2020), today-bday, today+10, bday-5.
+
+
+Постановка задачи:
+Создать класс Date для работы с датами в формате «день.месяц.год».
+Дата представляется структурой с полями типа unsigned int для года, месяца и дня.
+Определить конструктор по умолчанию, конструктор, принимающий в качестве параметров 3 числа, конструктор,
+принимающий строку вида «день.месяц.год», конструктор копирования, деструктор, оператор присваивания.
+Перегрузить операторы прибавления целого числа дней «+», вычитания целого числа дней «-», вычитания из одной даты другой,
+выводящей количество дней между датами, сравнения на равенство «==», оператор «<<» для работы со стандартным потоком вывода.
+Продемонстрировать работу программы на примере: Date bday(“21.05.1995”), today(2,4,2020), today-bday, today+10, bday-5.
