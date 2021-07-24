@@ -15,7 +15,7 @@ public:
 	virtual void set(std::string persona, std::string status, int amount) = 0;
 };*/
 
-class Observer { // Наблюдатель
+class Observer { // РќР°Р±Р»СЋРґР°С‚РµР»СЊ
 public:
 	virtual void update(Citizens&) = 0;
 };
@@ -29,17 +29,17 @@ protected:
 public:
 	Citizens() {}
 	~Citizens() { observers.clear(); }
-	void registerObserver(Observer& checkist) { // Добавить наблюдателя
+	void registerObserver(Observer& checkist) { // Р”РѕР±Р°РІРёС‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		std::cout << "Checkist started working " << std::endl;
 		observers.push_back(&checkist);
 	}
 	
-	void removeObserver(Observer& checkist) { // Удалить наблюдателя
+	void removeObserver(Observer& checkist) { // РЈРґР°Р»РёС‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		std::cout << "Checkist stopped looking after this person " << std::endl;
 		observers.remove(&checkist);
 	}
 
-	void notify() { // Уведомить
+	void notify() { // РЈРІРµРґРѕРјРёС‚СЊ
 		std::cout << "ALARM " << std::endl;
 		for (auto& Observer : observers)
 		{
@@ -52,22 +52,22 @@ public:
 		notify();
 	}
 
-	void set(std::string prs, std::string stat, int number) { // Установить новые значения
+	void set(std::string prs, std::string stat, int number) { // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РЅРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 		persona = prs;
 		status = stat;
 		amount = number;
 		changes();
 	}
 
-	std::string getName() { // Возвращает имя
+	std::string getName() { // Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ
 		return persona;
 	}
 
-	std::string getStatus() { // Статус
+	std::string getStatus() { // РЎС‚Р°С‚СѓСЃ
 		return status;
 	}
 
-	int getAmount() { // Количество доносов
+	int getAmount() { // РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРЅРѕСЃРѕРІ
 		return amount;
 	}
 };
@@ -86,22 +86,22 @@ public:
 		ppl = new Citizens;
 	}
 
-	void subscribe(Citizens& pepl) { // Подписать наблюдателя
+	void subscribe(Citizens& pepl) { // РџРѕРґРїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		pepl.registerObserver(*this);
 	}
 
-	void unsubscribe(Citizens& pepl) { // Отписать наблюдателя
+	void unsubscribe(Citizens& pepl) { // РћС‚РїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		pepl.removeObserver(*this);
 	}
 
-	void display() { // Вывод данных о человеке на экран
+	void display() { // Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ С‡РµР»РѕРІРµРєРµ РЅР° СЌРєСЂР°РЅ
 		std::cout << "Current name of the person -- " << imya <<  std::endl;
 	}
 
-	void update(Citizens& pepl) { // Обновить данные
+	void update(Citizens& pepl) { // РћР±РЅРѕРІРёС‚СЊ РґР°РЅРЅС‹Рµ
 		//std::cout << "ENTER UPDATE" << std::endl;
 		Citizens& curr = dynamic_cast<Citizens&> (pepl);
-		imya = curr.getName(); // Получить новое имя
+		imya = curr.getName(); // РџРѕР»СѓС‡РёС‚СЊ РЅРѕРІРѕРµ РёРјСЏ
 		display();
 	}
 };
@@ -118,22 +118,22 @@ public:
 		ppl = new Citizens;
 	}
 
-	void subscribe(Citizens& pepl) { // Подписать наблюдателя
+	void subscribe(Citizens& pepl) { // РџРѕРґРїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		pepl.registerObserver(*this);
 	}
 
-	void unsubscribe(Citizens& pepl) { // Отписать наблюдателя
+	void unsubscribe(Citizens& pepl) { // РћС‚РїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		pepl.removeObserver(*this);
 	}
 
-	void display() { // Вывод данных о человеке на экран
+	void display() { // Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ С‡РµР»РѕРІРµРєРµ РЅР° СЌРєСЂР°РЅ
 		std::cout << "Current status of the person -- " << status << std::endl;
 	}
 
-	void update(Citizens& pepl) { // Обновить данные
+	void update(Citizens& pepl) { // РћР±РЅРѕРІРёС‚СЊ РґР°РЅРЅС‹Рµ
 		//std::cout << "ENTER UPDATE" << std::endl;
 		Citizens& curr = dynamic_cast<Citizens&> (pepl);
-		status = curr.getStatus(); // Получить новое имя
+		status = curr.getStatus(); // РџРѕР»СѓС‡РёС‚СЊ РЅРѕРІРѕРµ РёРјСЏ
 		display();
 	}
 };
@@ -150,23 +150,23 @@ public:
 		ppl = new Citizens;
 	}
 
-	void subscribe(Citizens& pepl) { // Подписать наблюдателя
+	void subscribe(Citizens& pepl) { // РџРѕРґРїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		std::cout << this << std::endl;
 		pepl.registerObserver(*this);
 	}
 
-	void unsubscribe(Citizens& pepl) { // Отписать наблюдателя
+	void unsubscribe(Citizens& pepl) { // РћС‚РїРёСЃР°С‚СЊ РЅР°Р±Р»СЋРґР°С‚РµР»СЏ
 		pepl.removeObserver(*this);
 	}
 
-	void display() { // Вывод данных о человеке на экран
+	void display() { // Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ С‡РµР»РѕРІРµРєРµ РЅР° СЌРєСЂР°РЅ
 		std::cout << "Current number of griveances of the person -- " << number << std::endl;
 	}
 
-	void update(Citizens& pepl) { // Обновить данные
+	void update(Citizens& pepl) { // РћР±РЅРѕРІРёС‚СЊ РґР°РЅРЅС‹Рµ
 		//std::cout << "ENTER UPDATE" << std::endl;
 		Citizens& curr = dynamic_cast<Citizens&> (pepl);
-		number = curr.getAmount(); // Получить новое имя
+		number = curr.getAmount(); // РџРѕР»СѓС‡РёС‚СЊ РЅРѕРІРѕРµ РёРјСЏ
 		display();
 	}
 };
