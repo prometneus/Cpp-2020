@@ -6,30 +6,30 @@ using namespace std;
 template <class Deque>
 class Iterator {
 public:
-	using ValueType = typename Deque::ValueType; // Упрощаю себе задачу, чтобы прописывать на одно слово меньше
+	using ValueType = typename Deque::ValueType; // РЈРїСЂРѕС‰Р°СЋ СЃРµР±Рµ Р·Р°РґР°С‡Сѓ, С‡С‚РѕР±С‹ РїСЂРѕРїРёСЃС‹РІР°С‚СЊ РЅР° РѕРґРЅРѕ СЃР»РѕРІРѕ РјРµРЅСЊС€Рµ
 
 	ValueType* myptr;
 
 	Iterator(ValueType* ptr) : myptr(ptr) {}
 	~Iterator() {}
 
-	Iterator& operator++() { // Перегрузка оператора ++ (постфиксный инкремент)
+	Iterator& operator++() { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ++ (РїРѕСЃС‚С„РёРєСЃРЅС‹Р№ РёРЅРєСЂРµРјРµРЅС‚)
 		myptr = myptr->next;
 		return *this;
 	}
 	
-	Iterator operator++(int) { // Префиксный инекремент
+	Iterator operator++(int) { // РџСЂРµС„РёРєСЃРЅС‹Р№ РёРЅРµРєСЂРµРјРµРЅС‚
 		Iterator temp = *this;
 		++(*this);
 		return temp;
 	}
 
-	Iterator& operator--() { // Постфиксный декремент
+	Iterator& operator--() { // РџРѕСЃС‚С„РёРєСЃРЅС‹Р№ РґРµРєСЂРµРјРµРЅС‚
 		myptr = myptr->prev;
 		return *this;
 	}
 
-	Iterator operator--(int) { // Префиксный декремент
+	Iterator operator--(int) { // РџСЂРµС„РёРєСЃРЅС‹Р№ РґРµРєСЂРµРјРµРЅС‚
 		Iterator temp = *this;
 		--(*this);
 		return temp;
@@ -43,8 +43,8 @@ public:
 		return myptr;
 	}
 
-	bool empty() { // Метод, проверяющий контейнер на пустоту
-		if (myptr) return false; // Ведь если там ничего нет, то и указывать не на что, а значит myptr будет NULL
+	bool empty() { // РњРµС‚РѕРґ, РїСЂРѕРІРµСЂСЏСЋС‰РёР№ РєРѕРЅС‚РµР№РЅРµСЂ РЅР° РїСѓСЃС‚РѕС‚Сѓ
+		if (myptr) return false; // Р’РµРґСЊ РµСЃР»Рё С‚Р°Рј РЅРёС‡РµРіРѕ РЅРµС‚, С‚Рѕ Рё СѓРєР°Р·С‹РІР°С‚СЊ РЅРµ РЅР° С‡С‚Рѕ, Р° Р·РЅР°С‡РёС‚ myptr Р±СѓРґРµС‚ NULL
 		else return true;
 	}
 
@@ -67,22 +67,22 @@ public:
 		else return false;
 	}*/
 
-	void operator= (const Iterator& second) { // Перегрузка оператора присваивания
+	void operator= (const Iterator& second) { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 		this->myptr = second.myptr;
 	}
 };
 
-template <class Type> // Реализация шаблона контейнера двусторонней очереди
+template <class Type> // Р РµР°Р»РёР·Р°С†РёСЏ С€Р°Р±Р»РѕРЅР° РєРѕРЅС‚РµР№РЅРµСЂР° РґРІСѓСЃС‚РѕСЂРѕРЅРЅРµР№ РѕС‡РµСЂРµРґРё
 class Deque {
 public:
-	using iterator = Iterator<Deque<Type>>; // Чтобы не прописывать так много
+	using iterator = Iterator<Deque<Type>>; // Р§С‚РѕР±С‹ РЅРµ РїСЂРѕРїРёСЃС‹РІР°С‚СЊ С‚Р°Рє РјРЅРѕРіРѕ
 
-	struct Node { // Создание списка, на котором будет базироваться двусторонняя очередь
+	struct Node { // РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєР°, РЅР° РєРѕС‚РѕСЂРѕРј Р±СѓРґРµС‚ Р±Р°Р·РёСЂРѕРІР°С‚СЊСЃСЏ РґРІСѓСЃС‚РѕСЂРѕРЅРЅСЏСЏ РѕС‡РµСЂРµРґСЊ
 		Node* next, * prev;
 		Type data;
 		explicit Node(const Type& data) : next(NULL), prev(NULL), data(data) {}
 		Node() {};
-		static Node* create(Type data) { // Функция создания нового узла списка
+		static Node* create(Type data) { // Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ СѓР·Р»Р° СЃРїРёСЃРєР°
 			Node* unit = new Node;
 			unit->data = data;
 			unit->prev = unit->next = NULL;
@@ -91,7 +91,7 @@ public:
 	};
 
 	Node* head, *tail;
-	int volume; // Переменная для хренения объема контейнера
+	int volume; // РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂРµРЅРµРЅРёСЏ РѕР±СЉРµРјР° РєРѕРЅС‚РµР№РЅРµСЂР°
 
 	using ValueType = Node;
 
@@ -99,27 +99,27 @@ public:
 	explicit Deque() : head(NULL), tail(NULL), volume(0) {}
 	~Deque() { clear(); }
 
-	const Type& getfirst() const { return head->data; } // Метод, позволяющий получить элемент с начала очереди
+	const Type& getfirst() const { return head->data; } // РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РїРѕР»СѓС‡РёС‚СЊ СЌР»РµРјРµРЅС‚ СЃ РЅР°С‡Р°Р»Р° РѕС‡РµСЂРµРґРё
 
-	const Type& getlast() const { return tail->data; } // С конца очереди
+	const Type& getlast() const { return tail->data; } // РЎ РєРѕРЅС†Р° РѕС‡РµСЂРµРґРё
 
-	bool isempty() const { return head == NULL; } // Метод, проверяющий пустоту контейнера
+	bool isempty() const { return head == NULL; } // РњРµС‚РѕРґ, РїСЂРѕРІРµСЂСЏСЋС‰РёР№ РїСѓСЃС‚РѕС‚Сѓ РєРѕРЅС‚РµР№РЅРµСЂР°
 
-	int size() const { return volume; } // Метод, возвращающий размер deque
+	int size() const { return volume; } // РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЂР°Р·РјРµСЂ deque
 
-	void insertfirst(const Type& value) { // Метод, позволяющий вставить элемент в начало
-		Node* unit = new Node(value); // Создание нового узла списка
-		if (!head) head = tail = unit; // Если дека пуста, то там появится элемент, который будет и последним, и первым одновременно
-		else { // Если не пуста
-			unit->next = head; // Следующий за новым элементом теперь -- бывшая голова
-			head->prev = unit; // А предыдущий элемент головы -- новый
-			head = unit; // Новый элемент -- новая голова списка
+	void insertfirst(const Type& value) { // РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РІСЃС‚Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РЅР°С‡Р°Р»Рѕ
+		Node* unit = new Node(value); // РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СѓР·Р»Р° СЃРїРёСЃРєР°
+		if (!head) head = tail = unit; // Р•СЃР»Рё РґРµРєР° РїСѓСЃС‚Р°, С‚Рѕ С‚Р°Рј РїРѕСЏРІРёС‚СЃСЏ СЌР»РµРјРµРЅС‚, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ Рё РїРѕСЃР»РµРґРЅРёРј, Рё РїРµСЂРІС‹Рј РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ
+		else { // Р•СЃР»Рё РЅРµ РїСѓСЃС‚Р°
+			unit->next = head; // РЎР»РµРґСѓСЋС‰РёР№ Р·Р° РЅРѕРІС‹Рј СЌР»РµРјРµРЅС‚РѕРј С‚РµРїРµСЂСЊ -- Р±С‹РІС€Р°СЏ РіРѕР»РѕРІР°
+			head->prev = unit; // Рђ РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РіРѕР»РѕРІС‹ -- РЅРѕРІС‹Р№
+			head = unit; // РќРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ -- РЅРѕРІР°СЏ РіРѕР»РѕРІР° СЃРїРёСЃРєР°
 		}
-		volume++; // Увеличить объем, так как добавили элемент
+		volume++; // РЈРІРµР»РёС‡РёС‚СЊ РѕР±СЉРµРј, С‚Р°Рє РєР°Рє РґРѕР±Р°РІРёР»Рё СЌР»РµРјРµРЅС‚
 	}
 
-	void insertlast(const Type& value) { // Метод, позволяющий вставить элемент в конец
-		Node* unit = new Node(value); // Работает аналогично предыдущему, только с концом
+	void insertlast(const Type& value) { // РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РІСЃС‚Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС†
+		Node* unit = new Node(value); // Р Р°Р±РѕС‚Р°РµС‚ Р°РЅР°Р»РѕРіРёС‡РЅРѕ РїСЂРµРґС‹РґСѓС‰РµРјСѓ, С‚РѕР»СЊРєРѕ СЃ РєРѕРЅС†РѕРј
 		if (!head) head = tail = unit;
 		else {
 			unit->prev = tail;
@@ -129,18 +129,18 @@ public:
 		volume++;
 	}
 
-	void popfirst() { // Метод, позволяющий извлечь элемент из начала
-		if (head) { // Если голова списка существует
-			Node* temp = head; // Буферный элемент
-			head = head->next; // Смещаем голову
+	void popfirst() { // РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РёР·РІР»РµС‡СЊ СЌР»РµРјРµРЅС‚ РёР· РЅР°С‡Р°Р»Р°
+		if (head) { // Р•СЃР»Рё РіРѕР»РѕРІР° СЃРїРёСЃРєР° СЃСѓС‰РµСЃС‚РІСѓРµС‚
+			Node* temp = head; // Р‘СѓС„РµСЂРЅС‹Р№ СЌР»РµРјРµРЅС‚
+			head = head->next; // РЎРјРµС‰Р°РµРј РіРѕР»РѕРІСѓ
 			delete temp;
 		}
-		if (!head) tail = NULL; // А если был убран последний элемент, то деки не осталось в принципе, поэтому зануляем указали
-		--volume; // Уменьшаем объём
+		if (!head) tail = NULL; // Рђ РµСЃР»Рё Р±С‹Р» СѓР±СЂР°РЅ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚, С‚Рѕ РґРµРєРё РЅРµ РѕСЃС‚Р°Р»РѕСЃСЊ РІ РїСЂРёРЅС†РёРїРµ, РїРѕСЌС‚РѕРјСѓ Р·Р°РЅСѓР»СЏРµРј СѓРєР°Р·Р°Р»Рё
+		--volume; // РЈРјРµРЅСЊС€Р°РµРј РѕР±СЉС‘Рј
 	}
 
-	void poplast() { // Метод, позволяющий извлечь элемент из конца
-		if (tail) { // Если конец вообще существует
+	void poplast() { // РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РёР·РІР»РµС‡СЊ СЌР»РµРјРµРЅС‚ РёР· РєРѕРЅС†Р°
+		if (tail) { // Р•СЃР»Рё РєРѕРЅРµС† РІРѕРѕР±С‰Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 			Node* temp = tail;
 			tail = tail->prev;
 			delete temp;
@@ -149,25 +149,25 @@ public:
 		--volume;
 	}
 
-	void clear() { // Метод, очищающий очередь целиком 
-		while (!isempty() || head) popfirst(); // Пока очередь не пуста или существует голова списка, достаём первый элемент
+	void clear() { // РњРµС‚РѕРґ, РѕС‡РёС‰Р°СЋС‰РёР№ РѕС‡РµСЂРµРґСЊ С†РµР»РёРєРѕРј 
+		while (!isempty() || head) popfirst(); // РџРѕРєР° РѕС‡РµСЂРµРґСЊ РЅРµ РїСѓСЃС‚Р° РёР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ РіРѕР»РѕРІР° СЃРїРёСЃРєР°, РґРѕСЃС‚Р°С‘Рј РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚
 	}
 
-	void show() { // Метод, выводящий очередь на экран
+	void show() { // РњРµС‚РѕРґ, РІС‹РІРѕРґСЏС‰РёР№ РѕС‡РµСЂРµРґСЊ РЅР° СЌРєСЂР°РЅ
 		Node* temp = head;
-		while (temp != tail->next) { // Перемещаемся по списку внутри деки и выводим элемент на экран
+		while (temp != tail->next) { // РџРµСЂРµРјРµС‰Р°РµРјСЃСЏ РїРѕ СЃРїРёСЃРєСѓ РІРЅСѓС‚СЂРё РґРµРєРё Рё РІС‹РІРѕРґРёРј СЌР»РµРјРµРЅС‚ РЅР° СЌРєСЂР°РЅ
 			cout << temp->data << endl;
-			temp = temp->next; // Смещаемся на следующий элемент
+			temp = temp->next; // РЎРјРµС‰Р°РµРјСЃСЏ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 		}
 	}
 
 
-	friend ostream& operator<<(ostream& os, Deque<Type>& deq) { // Перегрузка оператора вывода
-		deq.show(); // Просто используется функция вывода содержимого на экран
+	friend ostream& operator<<(ostream& os, Deque<Type>& deq) { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
+		deq.show(); // РџСЂРѕСЃС‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РЅР° СЌРєСЂР°РЅ
 		return os;
 	}
 
-	friend istream& operator>>(istream& is, Deque<Type>& deq) { // Перегрузка оператора ввода
+	friend istream& operator>>(istream& is, Deque<Type>& deq) { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІРІРѕРґР°
 		int n = 0;
 		Type elem = 0;
 		cout << "Enter the amount of elements in deque: ";
@@ -175,46 +175,46 @@ public:
 		for (int i = 0; i < n; i++) {
 			cout << "Enter element: ";
 			cin >> elem;
-			deq.insertlast(elem); // Добавление нового элемента будет идти в конец дека
+			deq.insertlast(elem); // Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° Р±СѓРґРµС‚ РёРґС‚Рё РІ РєРѕРЅРµС† РґРµРєР°
 		}
 		return is;
 	}
 
-	// Итераторы пошли
+	// РС‚РµСЂР°С‚РѕСЂС‹ РїРѕС€Р»Рё
 
-	iterator begin() noexcept { // Начало -- голова списка, на котором построена двусвязная очередь
+	iterator begin() noexcept { // РќР°С‡Р°Р»Рѕ -- РіРѕР»РѕРІР° СЃРїРёСЃРєР°, РЅР° РєРѕС‚РѕСЂРѕРј РїРѕСЃС‚СЂРѕРµРЅР° РґРІСѓСЃРІСЏР·РЅР°СЏ РѕС‡РµСЂРµРґСЊ
 		return iterator(head);
 	}
 
-	iterator end() noexcept { // Конец -- хвост
+	iterator end() noexcept { // РљРѕРЅРµС† -- С…РІРѕСЃС‚
 		return iterator(tail);
 	}
 
-	iterator erase(iterator pos) { // Метод erase удаляет элемент, стоящий на pos
+	iterator erase(iterator pos) { // РњРµС‚РѕРґ erase СѓРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚, СЃС‚РѕСЏС‰РёР№ РЅР° pos
 		if (pos.myptr) {
 			Node* temp = pos->next;
 			if (pos == head) popfirst();
 			else {
-				pos->prev->next = pos->next; // Переназначаем связи, исключая pos из цепочки 
+				pos->prev->next = pos->next; // РџРµСЂРµРЅР°Р·РЅР°С‡Р°РµРј СЃРІСЏР·Рё, РёСЃРєР»СЋС‡Р°СЏ pos РёР· С†РµРїРѕС‡РєРё 
 				pos->next->prev = pos->prev;
-				--volume; // Уменьшаем объем
+				--volume; // РЈРјРµРЅСЊС€Р°РµРј РѕР±СЉРµРј
 				delete pos.myptr;
 			}
-			return temp; // Возвращаем итератор на следущий за pos элемент
+			return temp; // Р’РѕР·РІСЂР°С‰Р°РµРј РёС‚РµСЂР°С‚РѕСЂ РЅР° СЃР»РµРґСѓС‰РёР№ Р·Р° pos СЌР»РµРјРµРЅС‚
 		}
 		else return begin();
 	}
 
-	iterator erase(iterator begin, iterator end) { // Эта версия erase удаляет элементы от begin и до end
+	iterator erase(iterator begin, iterator end) { // Р­С‚Р° РІРµСЂСЃРёСЏ erase СѓРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚С‹ РѕС‚ begin Рё РґРѕ end
 		while (begin != end) begin = erase(begin);
 		return end;
 	}
 
-	iterator insert(iterator pos, const Type& key) { // Функция insert вставляет элемент перед pos
-			Node* unit = Node::create(key); // Создаётся новый узел списка для деки
-			unit->prev = pos->prev; // Перед(!) pos
-			unit->next = pos.myptr; // Установка связей
-			pos->prev->next = unit; // Следующий за предыдущим для pos теперь станет новый элемент с данными key
+	iterator insert(iterator pos, const Type& key) { // Р¤СѓРЅРєС†РёСЏ insert РІСЃС‚Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ РїРµСЂРµРґ pos
+			Node* unit = Node::create(key); // РЎРѕР·РґР°С‘С‚СЃСЏ РЅРѕРІС‹Р№ СѓР·РµР» СЃРїРёСЃРєР° РґР»СЏ РґРµРєРё
+			unit->prev = pos->prev; // РџРµСЂРµРґ(!) pos
+			unit->next = pos.myptr; // РЈСЃС‚Р°РЅРѕРІРєР° СЃРІСЏР·РµР№
+			pos->prev->next = unit; // РЎР»РµРґСѓСЋС‰РёР№ Р·Р° РїСЂРµРґС‹РґСѓС‰РёРј РґР»СЏ pos С‚РµРїРµСЂСЊ СЃС‚Р°РЅРµС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃ РґР°РЅРЅС‹РјРё key
 			pos->prev = unit; 
 			pos.myptr = unit;
 			++volume;
@@ -222,14 +222,14 @@ public:
 	}
 
 	void swap(Deque* dq) {
-		int tmpvol = this->volume; // Буфер для обмена
-		iterator beginiter = this->begin(); // Начало становится началом
-		iterator enditer = this->end(); // Конец -- концом
-		this->head = dq->head; // Обмениваем голову у первого контейнера на голову второго
-		this->tail = dq->tail; // Хвост первого на хвост второго
-		this->volume = dq->volume; // Задаём размер
-		dq->head = beginiter.myptr; // Второму отдаём указатель на голову первого
-		dq->tail = enditer.myptr; // Указатель на хвост первого
-		dq->volume = tmpvol; // И объём из буфера
+		int tmpvol = this->volume; // Р‘СѓС„РµСЂ РґР»СЏ РѕР±РјРµРЅР°
+		iterator beginiter = this->begin(); // РќР°С‡Р°Р»Рѕ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РЅР°С‡Р°Р»РѕРј
+		iterator enditer = this->end(); // РљРѕРЅРµС† -- РєРѕРЅС†РѕРј
+		this->head = dq->head; // РћР±РјРµРЅРёРІР°РµРј РіРѕР»РѕРІСѓ Сѓ РїРµСЂРІРѕРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° РіРѕР»РѕРІСѓ РІС‚РѕСЂРѕРіРѕ
+		this->tail = dq->tail; // РҐРІРѕСЃС‚ РїРµСЂРІРѕРіРѕ РЅР° С…РІРѕСЃС‚ РІС‚РѕСЂРѕРіРѕ
+		this->volume = dq->volume; // Р—Р°РґР°С‘Рј СЂР°Р·РјРµСЂ
+		dq->head = beginiter.myptr; // Р’С‚РѕСЂРѕРјСѓ РѕС‚РґР°С‘Рј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РіРѕР»РѕРІСѓ РїРµСЂРІРѕРіРѕ
+		dq->tail = enditer.myptr; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С…РІРѕСЃС‚ РїРµСЂРІРѕРіРѕ
+		dq->volume = tmpvol; // Р РѕР±СЉС‘Рј РёР· Р±СѓС„РµСЂР°
 	}
 };
