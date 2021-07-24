@@ -8,32 +8,32 @@ private:
 	int kopecks;
 
 public:
-	Money() : rubles(0), kopecks(0) {} // Конструктор по умолчанию
-	Money(long int one, int two) : rubles(one+=two/100), kopecks(two = two % 100) {} // Конструктор по заданным значениям
-	~Money() {} // Деструктор
+	Money() : rubles(0), kopecks(0) {} // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	Money(long int one, int two) : rubles(one+=two/100), kopecks(two = two % 100) {} // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёСЏРј
+	~Money() {} // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	void print() { // Функция вывода на экран
+	void print() { // Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
 		cout << rubles << "," << kopecks << endl;
 	}
 
-	friend istream& operator>>(istream& is, Money& cash) { // Дружественная функция перегрузки оператора ввода
+	friend istream& operator>>(istream& is, Money& cash) { // Р”СЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂР° РІРІРѕРґР°
 		cout << "Enter the amount of rubles and kopecks: ";
 		is >> cash.rubles;
 		is >> cash.kopecks;
-		if (cash.kopecks / 100 != 0) { // Если копеек больше 100, то
-			cash.rubles += cash.kopecks / 100; // Целая часть от деления на 100 это кол-во рублей
-			cash.kopecks = cash.kopecks % 100; // Остаток от деления на 100 - кол-во оставшихся копеек
+		if (cash.kopecks / 100 != 0) { // Р•СЃР»Рё РєРѕРїРµРµРє Р±РѕР»СЊС€Рµ 100, С‚Рѕ
+			cash.rubles += cash.kopecks / 100; // Р¦РµР»Р°СЏ С‡Р°СЃС‚СЊ РѕС‚ РґРµР»РµРЅРёСЏ РЅР° 100 СЌС‚Рѕ РєРѕР»-РІРѕ СЂСѓР±Р»РµР№
+			cash.kopecks = cash.kopecks % 100; // РћСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ РЅР° 100 - РєРѕР»-РІРѕ РѕСЃС‚Р°РІС€РёС…СЃСЏ РєРѕРїРµРµРє
 		}
 		return is;
 	}
 
-	friend ostream& operator<<(ostream& os, const Money& cash) { // Дружественная функция перегрузки оператора вывода
+	friend ostream& operator<<(ostream& os, const Money& cash) { // Р”СЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
 		os << cash.rubles << "," << cash.kopecks;
 		return os;
 	}
 
-	const Money& operator=(const Money& cash) { // Перегрузка операции присваивания
-		rubles = cash.rubles; // Присваивание по полям
+	const Money& operator=(const Money& cash) { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С†РёРё РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+		rubles = cash.rubles; // РџСЂРёСЃРІР°РёРІР°РЅРёРµ РїРѕ РїРѕР»СЏРј
 		kopecks = cash.kopecks;
 		return *this;
 	}
@@ -43,27 +43,27 @@ public:
 	}
 
 	bool operator!=(const Money& cash) const {
-		return !(*this == cash); // Перегрузка логической инверсией
+		return !(*this == cash); // РџРµСЂРµРіСЂСѓР·РєР° Р»РѕРіРёС‡РµСЃРєРѕР№ РёРЅРІРµСЂСЃРёРµР№
 	}
 
 	bool operator>=(const Money& cash) const {
-		if (rubles > cash.rubles) // Рассматриваем по рублям
+		if (rubles > cash.rubles) // Р Р°СЃСЃРјР°С‚СЂРёРІР°РµРј РїРѕ СЂСѓР±Р»СЏРј
 			return true;
-		else if (rubles == cash.rubles) // Если они равны - смотрим копейки
+		else if (rubles == cash.rubles) // Р•СЃР»Рё РѕРЅРё СЂР°РІРЅС‹ - СЃРјРѕС‚СЂРёРј РєРѕРїРµР№РєРё
 			if (kopecks > cash.kopecks)
 			return true;
 		return false;
 	}
 
 	bool operator>(const Money& cash) const {
-		return ((*this >= cash) && (*this != cash)); // >= и != дает >
+		return ((*this >= cash) && (*this != cash)); // >= Рё != РґР°РµС‚ >
 	}
 
 	bool operator<(const Money& cash) const {
-		return !(*this >= cash); // !(>=) дает <
+		return !(*this >= cash); // !(>=) РґР°РµС‚ <
 	}
 
 	bool operator<=(const Money& cash) const {
-		return (!(*this >= cash) || *this == cash); // !(>=) или == дает < или == (<=)
+		return (!(*this >= cash) || *this == cash); // !(>=) РёР»Рё == РґР°РµС‚ < РёР»Рё == (<=)
 	}
 };
