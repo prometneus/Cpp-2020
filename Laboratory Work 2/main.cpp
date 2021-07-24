@@ -1,20 +1,20 @@
 #include <iostream>
-#include <cctype> // Для isdigit
+#include <cctype> // Р”Р»СЏ isdigit
 #include "Class.h"
 #include "Template.h"
 
 int main(void) {
 	char choice;
-	tryAgain: // Устанавливаем метку, на которую будем возвращаться при неправильном вводе
+	tryAgain: // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РјРµС‚РєСѓ, РЅР° РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµРј РІРѕР·РІСЂР°С‰Р°С‚СЊСЃСЏ РїСЂРё РЅРµРїСЂР°РІРёР»СЊРЅРѕРј РІРІРѕРґРµ
 	cout << "Enter the test you want to start: " << endl;
 	cout << "1 -- Test of the template of the container" << endl;
 	cout << "2 -- Test of the template for the created class" << endl;
 	cout << "Or press any letter to exit" << endl;
 	cin >> choice;
-	if (isdigit(choice)) { // Позволит выйти из программы при введении буквы с клавиатуры
-		switch (choice) // Код символа '1' -- 49, '2' -- 50. Для isdigit
+	if (isdigit(choice)) { // РџРѕР·РІРѕР»РёС‚ РІС‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹ РїСЂРё РІРІРµРґРµРЅРёРё Р±СѓРєРІС‹ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
+		switch (choice) // РљРѕРґ СЃРёРјРІРѕР»Р° '1' -- 49, '2' -- 50. Р”Р»СЏ isdigit
 		{
-		case 49: { // Тест очереди для стандартных типов данных 
+		case 49: { // РўРµСЃС‚ РѕС‡РµСЂРµРґРё РґР»СЏ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… С‚РёРїРѕРІ РґР°РЅРЅС‹С… 
 			int n;
 			Queue <int> queueint; // int
 			cout << "Enter the amount of elements to add in int queue: ";
@@ -23,7 +23,7 @@ int main(void) {
 			cout << "Enter " << n << " elements" << endl;
 			if (n != 0) {
 				for (int i = 0; i < n; i++) {
-					cin >> queueint; // Используем перегруженный оператор ввода
+					cin >> queueint; // РСЃРїРѕР»СЊР·СѓРµРј РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР°
 				}
 			}
 			cout << queueint;
@@ -47,7 +47,7 @@ int main(void) {
 				for (int i = 0; i < n; i++) {
 					float x;
 					cin >> x;
-					queueflt.push(x); // Используем функцию для ввода
+					queueflt.push(x); // РСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёСЋ РґР»СЏ РІРІРѕРґР°
 				}
 			}
 			if(queueflt.size() != 0){
@@ -66,34 +66,34 @@ int main(void) {
 			cout << "Enter " << n << " elements" << endl;
 			if (n != 0) {
 				for (int i = 0; i < n; i++) {
-					cin >> queuedbl1; // Используем перегруженный оператор ввода
+					cin >> queuedbl1; // РСЃРїРѕР»СЊР·СѓРµРј РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР°
 				}
 			}
 			if (queuedbl1.size() != 0) {
-				queuedbl2 = queuedbl1; // Перегруженная операция присваивания
-				cout << "For queue2 " << queuedbl2; // Перегруженная операция вывода
+				queuedbl2 = queuedbl1; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+				cout << "For queue2 " << queuedbl2; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РІС‹РІРѕРґР°
 			}
 		}
 		break;
 
-		case 50: { // Тест очереди для пользовательского класса
+		case 50: { // РўРµСЃС‚ РѕС‡РµСЂРµРґРё РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєР»Р°СЃСЃР°
 			long rub;
 			int kop;
 			Money cash1, cash2;
 			Queue<Money> q, r;
-			cin >> q; // Перегруженный оператор ввода для шаблона контейнера
+			cin >> q; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° РґР»СЏ С€Р°Р±Р»РѕРЅР° РєРѕРЅС‚РµР№РЅРµСЂР°
 			cout << "Enter the amount of rubles and kopecks " << endl;
 			cin >> rub >> kop;
-			cash1 = Money(rub, kop); // Будет использован конструктор с параметрами
+			cash1 = Money(rub, kop); // Р‘СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 			cout << "Function of printing for the class Money check: " << endl;
 			cash1.print();
-			q.push(cash1); // Функция добавления элемента в очередь (в конец очереди)
-			cin >> cash2; // Перегруженный оператор ввода для класса 
+			q.push(cash1); // Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РѕС‡РµСЂРµРґСЊ (РІ РєРѕРЅРµС† РѕС‡РµСЂРµРґРё)
+			cin >> cash2; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° РґР»СЏ РєР»Р°СЃСЃР° 
 			q.push(cash2);
-			cout << q << endl; // Перегруженный оператор вывода для очереди
+			cout << q << endl; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° РґР»СЏ РѕС‡РµСЂРµРґРё
 			cout << "The first element of the queue is " << q.show() << endl;
 			cout << "The size of the queue 1 equals to " << q.size() << endl;
-			r = q; // Перегруженный оператор присваивания
+			r = q; // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 			cout << endl << endl;
 			cout << "The size of the queue 2 equals to " << r.size() << endl;
 			cout << "Let's check if queues are the same" << endl;
@@ -109,7 +109,7 @@ int main(void) {
 		break;
 		default: {
 			cout << "Wrong choice, try again." << endl;
-			goto tryAgain; // Возвращаемся на метку сверху для повторного ввода
+			goto tryAgain; // Р’РѕР·РІСЂР°С‰Р°РµРјСЃСЏ РЅР° РјРµС‚РєСѓ СЃРІРµСЂС…Сѓ РґР»СЏ РїРѕРІС‚РѕСЂРЅРѕРіРѕ РІРІРѕРґР°
 		}
 		}
 	}
