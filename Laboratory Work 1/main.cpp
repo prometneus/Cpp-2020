@@ -1,61 +1,61 @@
 #include <string>
 #include <iostream>
-#include <fstream> // Для файлового вывода
-#include <ctime> // Для clock
-#include <cstdlib> // Поддержка еxit
+#include <fstream> // Р”Р»СЏ С„Р°Р№Р»РѕРІРѕРіРѕ РІС‹РІРѕРґР°
+#include <ctime> // Р”Р»СЏ clock
+#include <cstdlib> // РџРѕРґРґРµСЂР¶РєР° Рµxit
 #include "Header.h"
 
-using namespace std; // Пространство имен
+using namespace std; // РџСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ РёРјРµРЅ
 
 int main() {
-	unsigned long start, end, zeit1, zeit2; // Для временнЫх переменных
+	unsigned long start, end, zeit1, zeit2; // Р”Р»СЏ РІСЂРµРјРµРЅРЅР«С… РїРµСЂРµРјРµРЅРЅС‹С…
 	int i = 0;
 	ifstream f;
 
-	f.open("Accounting.txt"); // Ассоциация с файлом
-	if (!f.is_open()) { // Если не открылся, вывести сведения об ошибке
+	f.open("Accounting.txt"); // РђСЃСЃРѕС†РёР°С†РёСЏ СЃ С„Р°Р№Р»РѕРј
+	if (!f.is_open()) { // Р•СЃР»Рё РЅРµ РѕС‚РєСЂС‹Р»СЃСЏ, РІС‹РІРµСЃС‚Рё СЃРІРµРґРµРЅРёСЏ РѕР± РѕС€РёР±РєРµ
 		cout << "File didn't open" << endl;
 		exit(EXIT_FAILURE);
 	}
-	f.get(); // Поймать пробел для проверки файла на пустоту
-	if (f.eof()) { // Если файл пуст, написать об этом
+	f.get(); // РџРѕР№РјР°С‚СЊ РїСЂРѕР±РµР» РґР»СЏ РїСЂРѕРІРµСЂРєРё С„Р°Р№Р»Р° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	if (f.eof()) { // Р•СЃР»Рё С„Р°Р№Р» РїСѓСЃС‚, РЅР°РїРёСЃР°С‚СЊ РѕР± СЌС‚РѕРј
 		cout << "File is empty" << endl;
-		f.close(); // Закрыть файл
+		f.close(); // Р—Р°РєСЂС‹С‚СЊ С„Р°Р№Р»
 		return 1;
 	}
-	f.seekg(0, ios::beg); // Вернуться в начало файла
+	f.seekg(0, ios::beg); // Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°
 	
 	int n;
-	f >> n; // Считывание размера базы данных
+	f >> n; // РЎС‡РёС‚С‹РІР°РЅРёРµ СЂР°Р·РјРµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 	cout << "Database size " << n << endl << endl;
 
 	Personal* p = new Personal[n];
 	Personal* ap = new Personal[n];
-	while (i < n && !f.eof()) { // Считывание данных из файла
+	while (i < n && !f.eof()) { // РЎС‡РёС‚С‹РІР°РЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 		f >> p[i].fio.f;
 		f >> p[i].fio.i;
 		f >> p[i].fio.o;
 		f >> p[i].salary;
 		f >> p[i].branch;
 		f >> p[i].position;
-		f.get(); // Ловим символ перехода на новую строку
-		i++; // Шаг цикла
+		f.get(); // Р›РѕРІРёРј СЃРёРјРІРѕР» РїРµСЂРµС…РѕРґР° РЅР° РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ
+		i++; // РЁР°Рі С†РёРєР»Р°
 	}
 
-	f.close(); // Закрытие файла
+	f.close(); // Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
 
 	for (int i = 0; i < n; i++) {
-		ap[i] = p[i]; // Копирование данных для сортировок
+		ap[i] = p[i]; // РљРѕРїРёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С… РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРѕРє
 	}
 	
-	/*cout << "Massive" << endl; // Вывод изначального содержимого базы данных
+	/*cout << "Massive" << endl; // Р’С‹РІРѕРґ РёР·РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 	display(p, n);
 	cout << endl;*/
 
-	start = clock(); // Засекаем начало сортировки
+	start = clock(); // Р—Р°СЃРµРєР°РµРј РЅР°С‡Р°Р»Рѕ СЃРѕСЂС‚РёСЂРѕРІРєРё
 	p = insertionSort(p, n);
-	end = clock(); // Засекаем конец
-	zeit1 = end - start; // Затраченное на сортировку время
+	end = clock(); // Р—Р°СЃРµРєР°РµРј РєРѕРЅРµС†
+	zeit1 = end - start; // Р—Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІСЂРµРјСЏ
 	cout << "Time of insertion Sort - " << zeit1 << endl;
 	
 	start = clock();
@@ -64,13 +64,13 @@ int main() {
 	zeit2 = end - start;
 	cout << "Time of shaker Sorting - " << zeit2 << endl;
 
-	start = clock(); // Измерение времени сортировки вставками на отсортированном массиве
+	start = clock(); // РР·РјРµСЂРµРЅРёРµ РІСЂРµРјРµРЅРё СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё РЅР° РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРј РјР°СЃСЃРёРІРµ
 	p = insertionSort(p, n);
 	end = clock(); 
 	zeit1 = end - start; 
 	cout << endl << "Time of insertion Sort on sorted array - " << zeit1 << endl;
 
-	start = clock(); // Измерение времени сортировки шейкером на отсортированном массиве
+	start = clock(); // РР·РјРµСЂРµРЅРёРµ РІСЂРµРјРµРЅРё СЃРѕСЂС‚РёСЂРѕРІРєРё С€РµР№РєРµСЂРѕРј РЅР° РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРј РјР°СЃСЃРёРІРµ
 	ap = shakerSorting(ap, n);
 	end = clock();
 	zeit2 = end - start;
@@ -84,6 +84,6 @@ int main() {
 	display(ap, n);
 	cout << endl;*/
 
-	delete[] p; // Освобождение памяти
+	delete[] p; // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
 	delete[] ap;
 }
