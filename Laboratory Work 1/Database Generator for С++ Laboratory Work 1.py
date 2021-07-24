@@ -33,7 +33,7 @@ list_of_positions = ['Bookmaker', 'Cabinetmaker', 'Technician', 'Watchman', 'Nut
                      'Pharmacist', 'Analyst', 'Businessman', 'Detective', 'Dispatcher',
                      'Historian', 'Mangaka', 'Ophthalmologist', 'Radiophysicist', 'Swineherd']
 
-path = Path('C:/Users/ДОМАШНИЙ/source/repos/Project2C++/Project2C++/Accounting.txt')
+path = Path('C:/Users/Artem/source/repos/Project2C++/Project2C++/Accounting.txt')
 
 with open(path, 'w') as f:
     if N != 0:
