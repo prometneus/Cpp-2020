@@ -4,23 +4,23 @@ int main() {
 	int n = 0;
 	cout << "Enter the minimum length of the password: ";
 	cin >> n;
-	password_generator* generator = new composit_password_generator(n); // в конструкторе указываем минимальную длину пароля
+	password_generator* generator = new composit_password_generator(n); // РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ СѓРєР°Р·С‹РІР°РµРј РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РґР»РёРЅСѓ РїР°СЂРѕР»СЏ
 	n = 0;
 	cout << "Enter the number of digits in the password: ";
 	cin >> n;
-	generator->add(new digit_generator(n)); // устанавливаем количество цифр в пароле
+	generator->add(new digit_generator(n)); // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІ РїР°СЂРѕР»Рµ
 	n = 0;
 	cout << "Enter the number of symbols in the password: ";
 	cin >> n;
-	generator->add(new symbol_generator(n)); // символов
+	generator->add(new symbol_generator(n)); // СЃРёРјРІРѕР»РѕРІ
 	n = 0;
 	cout << "Enter the number of uppercase letters in the password: ";
 	cin >> n;
-	generator->add(new upper_letter_generator(n)); // заглавных букв
+	generator->add(new upper_letter_generator(n)); // Р·Р°РіР»Р°РІРЅС‹С… Р±СѓРєРІ
 	n = 0;
 	cout << "Enter the number of lowercase letters in the password: ";
 	cin >> n;
-	generator->add(new lower_letter_generator(n)); // прописных букв
+	generator->add(new lower_letter_generator(n)); // РїСЂРѕРїРёСЃРЅС‹С… Р±СѓРєРІ
 	cout << endl << "Minumum length of password: " << generator->length() << endl;
 	cout << "Every allowed symbol to use in a password: " << generator->allowed_chars() << endl << endl;
 	cout << "Password 1: " << generator->generate() << endl;
