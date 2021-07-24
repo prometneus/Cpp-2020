@@ -7,14 +7,14 @@ class Shape {
 protected:
 	char* name = new char[15];
 public: 
-	Shape() { // Конструктор объектов класса
+	Shape() { // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°
 		char temp[] = "Shape";
-		strcpy(name, temp); // Копирование имени
+		strcpy(name, temp); // РљРѕРїРёСЂРѕРІР°РЅРёРµ РёРјРµРЅРё
 	}
 	virtual double Area() {
 		return Area();
 	}
-	virtual Shape& operator =(const Shape& shape){ // Перегрузка оператора =
+	virtual Shape& operator =(const Shape& shape){ // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° =
 		if (this == &shape)
 			return *this;
 		if (strlen(name) == strlen(shape.name))
@@ -25,7 +25,7 @@ public:
 			strcpy(name, shape.name);
 		return *this;
 	}
-		Shape(const Shape & shape) { // Конструктор копирования
+		Shape(const Shape & shape) { // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 			delete[] name;
 			name = new char(strlen(shape.name) + 1);
 			strcpy(name, shape.name);
@@ -37,16 +37,16 @@ public:
 	protected:
 		double radius = 0;
 	public:
-		double Area() { // Функция подсчета площади
+		double Area() { // Р¤СѓРЅРєС†РёСЏ РїРѕРґСЃС‡РµС‚Р° РїР»РѕС‰Р°РґРё
 			return 3.14 * radius * radius;
 		}
-		void Data(double r) { // Функция сбора данных
+		void Data(double r) { // Р¤СѓРЅРєС†РёСЏ СЃР±РѕСЂР° РґР°РЅРЅС‹С…
 			radius = r;
 			char temp[] = "Circle";
 			strcpy(name, temp);
 		}
-		Circle(double radius) { Data(radius); } // Конструктор объекта по собранным данным
-		Circle& operator=(const Circle& circle) { // Перегрузка оператора = для круга
+		Circle(double radius) { Data(radius); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЉРµРєС‚Р° РїРѕ СЃРѕР±СЂР°РЅРЅС‹Рј РґР°РЅРЅС‹Рј
+		Circle& operator=(const Circle& circle) { // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° = РґР»СЏ РєСЂСѓРіР°
 			if (this == &circle)
 				return *this;
 			Shape::operator=(circle);
@@ -54,7 +54,7 @@ public:
 			return *this;
 		}
 	}
-	Circle(const Circle& circle) { // Перегрузка конструктора копирования для круга
+	Circle(const Circle& circle) { // РџРµСЂРµРіСЂСѓР·РєР° РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєРѕРїРёСЂРѕРІР°РЅРёСЏ РґР»СЏ РєСЂСѓРіР°
 		radius = circle.radius;
 		strcpy(name, circle.name);
 	}
@@ -119,12 +119,12 @@ public:
 };
 
 int main() {
-	Shape *examples[3]; // Инициализация массива указателей (которые разыменуются)
-	examples[0] = new Circle(3); // Указатель на круг
+	Shape *examples[3]; // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№ (РєРѕС‚РѕСЂС‹Рµ СЂР°Р·С‹РјРµРЅСѓСЋС‚СЃСЏ)
+	examples[0] = new Circle(3); // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєСЂСѓРі
 	examples[1] = new Square(4);
 	examples[2] = new Triangle(3, 4, 5);
-	for (int i = 0; i < 3; ++i) { // Обращение к функции подсчета площади для каждого порожденного объекта
+	for (int i = 0; i < 3; ++i) { // РћР±СЂР°С‰РµРЅРёРµ Рє С„СѓРЅРєС†РёРё РїРѕРґСЃС‡РµС‚Р° РїР»РѕС‰Р°РґРё РґР»СЏ РєР°Р¶РґРѕРіРѕ РїРѕСЂРѕР¶РґРµРЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°
 		std::cout << "Object number " << (i + 1) << " " << examples[i]->Area() << std::endl; 
-		delete examples[i]; // Очистка памяти
+		delete examples[i]; // РћС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	}
 }
