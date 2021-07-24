@@ -1,35 +1,35 @@
 #include "Deque.h"
-#include <ctime> // Чисто ради рандомчика добавил
+#include <ctime> // Р§РёСЃС‚Рѕ СЂР°РґРё СЂР°РЅРґРѕРјС‡РёРєР° РґРѕР±Р°РІРёР»
 
 
 int main() {
     Deque<double> dq;
     Deque<char> dva;
     Iterator<Deque<char>> check = dva.begin();
-    cout << "Iterator empty() check with a spurious deque \"dva\" -- " << check.empty() << endl; // Через итераторы
-    dva.insertfirst('a'); // Добавим символ в фальшивую деку
-    check = dva.begin(); // Реинициализируем итератор
+    cout << "Iterator empty() check with a spurious deque \"dva\" -- " << check.empty() << endl; // Р§РµСЂРµР· РёС‚РµСЂР°С‚РѕСЂС‹
+    dva.insertfirst('a'); // Р”РѕР±Р°РІРёРј СЃРёРјРІРѕР» РІ С„Р°Р»СЊС€РёРІСѓСЋ РґРµРєСѓ
+    check = dva.begin(); // Р РµРёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РёС‚РµСЂР°С‚РѕСЂ
     cout << "Iterator empty() check with a spurious deque \"dva\" with added element -- " << check.empty() << endl;
     using iterator = Iterator<Deque<double>>; 
     cout << "Deque filling: " << endl;
-    dq.insertlast(3); // Вставка в конец
-    dq.insertfirst(2); // Вставка в начало
+    dq.insertlast(3); // Р’СЃС‚Р°РІРєР° РІ РєРѕРЅРµС†
+    dq.insertfirst(2); // Р’СЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ
     dq.insertfirst(1);
     dq.insertlast(4);
     dq.insertlast(5);
     dq.insertfirst(0);
     cout << "Deque: " << endl;
-    dq.show(); // Вывод на экран с помощью функции
+    dq.show(); // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ СЃ РїРѕРјРѕС‰СЊСЋ С„СѓРЅРєС†РёРё
     iterator empty = dq.begin();
-    cout << "Emptiness check (iterator) -- " << empty.empty() << endl; // Через итераторы
-    cout << "Emptiness check (method) -- " << dq.isempty() << endl; // Через метод
+    cout << "Emptiness check (iterator) -- " << empty.empty() << endl; // Р§РµСЂРµР· РёС‚РµСЂР°С‚РѕСЂС‹
+    cout << "Emptiness check (method) -- " << dq.isempty() << endl; // Р§РµСЂРµР· РјРµС‚РѕРґ
     cout << endl << endl << endl << endl;
 
 
     cout << "Creating and filling another deque (dk) for swapping" << endl;
     Deque<double> dk;
-    cin >> dk; // Заполнение второй деки с помощью перегруженного оператора ввода
-    cout << "Deque dq before swapping: " << endl << dq << endl; // Вывод на экран с помощью перегруженного оператора вывода
+    cin >> dk; // Р—Р°РїРѕР»РЅРµРЅРёРµ РІС‚РѕСЂРѕР№ РґРµРєРё СЃ РїРѕРјРѕС‰СЊСЋ РїРµСЂРµРіСЂСѓР¶РµРЅРЅРѕРіРѕ РѕРїРµСЂР°С‚РѕСЂР° РІРІРѕРґР°
+    cout << "Deque dq before swapping: " << endl << dq << endl; // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ СЃ РїРѕРјРѕС‰СЊСЋ РїРµСЂРµРіСЂСѓР¶РµРЅРЅРѕРіРѕ РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
     dq.swap(&dk);
     cout << "Deque dq after swapping: " << endl;
     dq.show();
@@ -37,46 +37,46 @@ int main() {
     cout << endl << endl << endl << endl;
     
     
-    iterator beginiter = dq.begin(); // После свапа я заново инициализирую итераторы на начало и конец
+    iterator beginiter = dq.begin(); // РџРѕСЃР»Рµ СЃРІР°РїР° СЏ Р·Р°РЅРѕРІРѕ РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ РёС‚РµСЂР°С‚РѕСЂС‹ РЅР° РЅР°С‡Р°Р»Рѕ Рё РєРѕРЅРµС†
     iterator enditer = dq.end();
-    cout << "beginiter begin: " << beginiter->data << endl; // Вывод первого элемента контейнера
+    cout << "beginiter begin: " << beginiter->data << endl; // Р’С‹РІРѕРґ РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РєРѕРЅС‚РµР№РЅРµСЂР°
     cout << "Here is the print of deque's filling with postfix ++ operator" << endl;
-    for (beginiter; beginiter != NULL; beginiter++) { // Вывод всего контейнера итераторами
+    for (beginiter; beginiter != NULL; beginiter++) { // Р’С‹РІРѕРґ РІСЃРµРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР° РёС‚РµСЂР°С‚РѕСЂР°РјРё
         cout << beginiter->data << " ";
     }
-    cout << endl << "Last element using enditer: " << enditer->data << endl; // Вывод последнего элемента итератором enditer
+    cout << endl << "Last element using enditer: " << enditer->data << endl; // Р’С‹РІРѕРґ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° РёС‚РµСЂР°С‚РѕСЂРѕРј enditer
     cout << endl << endl << endl << endl;
 
 
     cout << "Let's add and delete an element in deque (dk)" << endl;
     cout << "Deque before:" << endl;
     dk.show();
-    enditer = dk.end(); // Снова реинициализирую итератор на конец, но уже из-за смены дека
+    enditer = dk.end(); // РЎРЅРѕРІР° СЂРµРёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ РёС‚РµСЂР°С‚РѕСЂ РЅР° РєРѕРЅРµС†, РЅРѕ СѓР¶Рµ РёР·-Р·Р° СЃРјРµРЅС‹ РґРµРєР°
     cout << "Inserting random number before the pre-last position (on the pre-pre-last exactly) using prefix -- on enditer iterator " << endl;
-    srand(time(0)); // Для вставки случайного числа
-    dk.insert(--enditer, rand()); // Элемент вставится перед итератором, поэтому, если я хочу вставить на пред-предпоследнюю позицию,
-    cout << "Deque after:" << endl; // нужно установить итератор на предпоследнюю позицию
+    srand(time(0)); // Р”Р»СЏ РІСЃС‚Р°РІРєРё СЃР»СѓС‡Р°Р№РЅРѕРіРѕ С‡РёСЃР»Р°
+    dk.insert(--enditer, rand()); // Р­Р»РµРјРµРЅС‚ РІСЃС‚Р°РІРёС‚СЃСЏ РїРµСЂРµРґ РёС‚РµСЂР°С‚РѕСЂРѕРј, РїРѕСЌС‚РѕРјСѓ, РµСЃР»Рё СЏ С…РѕС‡Сѓ РІСЃС‚Р°РІРёС‚СЊ РЅР° РїСЂРµРґ-РїСЂРµРґРїРѕСЃР»РµРґРЅСЋСЋ РїРѕР·РёС†РёСЋ,
+    cout << "Deque after:" << endl; // РќСѓР¶РЅРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РёС‚РµСЂР°С‚РѕСЂ РЅР° РїСЂРµРґРїРѕСЃР»РµРґРЅСЋСЋ РїРѕР·РёС†РёСЋ
     dk.show();
-    cout << "Now erasing newly added element" << endl; // Теперь удаление этого добавленного элемента
-    cout << "What to erase: " << (--enditer)->data << endl; // Вывод, что именно за элемент будет удалён
-    dk.erase(enditer); // Само удаление
+    cout << "Now erasing newly added element" << endl; // РўРµРїРµСЂСЊ СѓРґР°Р»РµРЅРёРµ СЌС‚РѕРіРѕ РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
+    cout << "What to erase: " << (--enditer)->data << endl; // Р’С‹РІРѕРґ, С‡С‚Рѕ РёРјРµРЅРЅРѕ Р·Р° СЌР»РµРјРµРЅС‚ Р±СѓРґРµС‚ СѓРґР°Р»С‘РЅ
+    dk.erase(enditer); // РЎР°РјРѕ СѓРґР°Р»РµРЅРёРµ
     cout << "Deque after:" << endl;
-    dk.show(); // Вывод дека, чтобы показать, что всё прошло успешно
+    dk.show(); // Р’С‹РІРѕРґ РґРµРєР°, С‡С‚РѕР±С‹ РїРѕРєР°Р·Р°С‚СЊ, С‡С‚Рѕ РІСЃС‘ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ
     cout << endl << endl << endl << endl;
 
 
-    cout << "Now let's erase everything but first and last element in deque dq" << endl; // Оставим первый и последний элементы в деке
+    cout << "Now let's erase everything but first and last element in deque dq" << endl; // РћСЃС‚Р°РІРёРј РїРµСЂРІС‹Р№ Рё РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚С‹ РІ РґРµРєРµ
     beginiter = dq.begin();
     enditer = dq.end();
     cout << "Deque before:" << endl << dq << endl;
-    dk.erase(++beginiter, enditer); // Будет почищено от первого элемента до последнего (не включая)
+    dk.erase(++beginiter, enditer); // Р‘СѓРґРµС‚ РїРѕС‡РёС‰РµРЅРѕ РѕС‚ РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РґРѕ РїРѕСЃР»РµРґРЅРµРіРѕ (РЅРµ РІРєР»СЋС‡Р°СЏ)
     cout << "Deque after:" << endl;
     dq.show();
     cout << endl << endl;
     
     cout << "Erasing all items except the last one in deque dk" << endl;
     cout << "Deque before:" << endl << dk << endl;
-    dk.erase((dk.begin())++, dk.end()); // Будет удалено всё кроме последнего элемента
+    dk.erase((dk.begin())++, dk.end()); // Р‘СѓРґРµС‚ СѓРґР°Р»РµРЅРѕ РІСЃС‘ РєСЂРѕРјРµ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
     cout << "Deque after:" << endl;
     dk.show();
     return 0;
