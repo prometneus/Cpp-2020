@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 
-//Конкретные базы для создания автомобиля в дальнейшем
-class dasAuto { // Базовый класс Автомобиль. Просто автомобиль без допов
+//РљРѕРЅРєСЂРµС‚РЅС‹Рµ Р±Р°Р·С‹ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ Р°РІС‚РѕРјРѕР±РёР»СЏ РІ РґР°Р»СЊРЅРµР№С€РµРј
+class dasAuto { // Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РђРІС‚РѕРјРѕР±РёР»СЊ. РџСЂРѕСЃС‚Рѕ Р°РІС‚РѕРјРѕР±РёР»СЊ Р±РµР· РґРѕРїРѕРІ
 protected:
 	dasAuto* car = 0;
 	std::string description;
@@ -17,7 +17,7 @@ public:
 	virtual double power() = 0;
 };
 
-class DieselEngine : public dasAuto { // Автомобиль с дизельным двигателем
+class DieselEngine : public dasAuto { // РђРІС‚РѕРјРѕР±РёР»СЊ СЃ РґРёР·РµР»СЊРЅС‹Рј РґРІРёРіР°С‚РµР»РµРј
 public:
 	DieselEngine() {
 		description = "Diesel engine";
@@ -28,7 +28,7 @@ public:
 	double power() { return 249; }
 };
 
-class PetrolEngine : public dasAuto { // Автомобиль с бензиновым двигателем
+class PetrolEngine : public dasAuto { // РђРІС‚РѕРјРѕР±РёР»СЊ СЃ Р±РµРЅР·РёРЅРѕРІС‹Рј РґРІРёРіР°С‚РµР»РµРј
 public:
 	PetrolEngine() {
 		description = "Petrol engine";
@@ -39,7 +39,7 @@ public:
 	double power() { return 245; }
 };
 
-//Абстрактный декоратор
+//РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РґРµРєРѕСЂР°С‚РѕСЂ
 class CondimentDecorator : public dasAuto {
 protected:
 	dasAuto* car = NULL;
@@ -51,7 +51,7 @@ public:
 	virtual std::string getDescription() = 0;
 };
 
-class STronicTransmission : public CondimentDecorator { // Коробка передач
+class STronicTransmission : public CondimentDecorator { // РљРѕСЂРѕР±РєР° РїРµСЂРµРґР°С‡
 public:
 	STronicTransmission(dasAuto* wagon) {
 		description = "S Tronic transmission";
@@ -70,7 +70,7 @@ public:
 	}
 };
 
-class TiptronicTransmission : public CondimentDecorator {// Другая коробка передач
+class TiptronicTransmission : public CondimentDecorator {// Р”СЂСѓРіР°СЏ РєРѕСЂРѕР±РєР° РїРµСЂРµРґР°С‡
 public:
 	TiptronicTransmission(dasAuto* wagon) {
 		description = "Tiptronic transmission";
@@ -89,7 +89,7 @@ public:
 	}
 };
 
-class SStyle : public CondimentDecorator { // Тип кузова
+class SStyle : public CondimentDecorator { // РўРёРї РєСѓР·РѕРІР°
 public:
 	SStyle(dasAuto* wagon) {
 		std::cout << "S-line design constructor" << std::endl;
@@ -107,7 +107,7 @@ public:
 	}
 };
 
-class Avant : public CondimentDecorator { // Другой тип кузова
+class Avant : public CondimentDecorator { // Р”СЂСѓРіРѕР№ С‚РёРї РєСѓР·РѕРІР°
 public:
 	Avant(dasAuto* wagon) {
 		std::cout << "Coupe constructor" << std::endl;
@@ -125,7 +125,7 @@ public:
 	}
 };
 
-class WhiteInterior : public CondimentDecorator { // Белый цвет внутреннего интерьера
+class WhiteInterior : public CondimentDecorator { // Р‘РµР»С‹Р№ С†РІРµС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РёРЅС‚РµСЂСЊРµСЂР°
 public:
 	WhiteInterior(dasAuto* wagon) {
 		std::cout << "White interior constructor" << std::endl;
@@ -143,7 +143,7 @@ public:
 	}
 };
 
-class DarkInterior : public CondimentDecorator { // Темный цвет внутреннего интерьера
+class DarkInterior : public CondimentDecorator { // РўРµРјРЅС‹Р№ С†РІРµС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РёРЅС‚РµСЂСЊРµСЂР°
 public:
 	DarkInterior(dasAuto* wagon) {
 		std::cout << "Dark interior constructor" << std::endl;
@@ -161,13 +161,13 @@ public:
 	}
 };
 
-class EmbeddedСomputer : public CondimentDecorator { // Встроенный компьютер
+class EmbeddedРЎomputer : public CondimentDecorator { // Р’СЃС‚СЂРѕРµРЅРЅС‹Р№ РєРѕРјРїСЊСЋС‚РµСЂ
 public:
-	EmbeddedСomputer(dasAuto* wagon) {
+	EmbeddedРЎomputer(dasAuto* wagon) {
 		std::cout << "Embedded Computer constructor" << std::endl;
 		car = wagon;
 	}
-	~EmbeddedСomputer() { std::cout << "Embedded Computer destructor" << std::endl; }
+	~EmbeddedРЎomputer() { std::cout << "Embedded Computer destructor" << std::endl; }
 	std::string getDescription() {
 		return car->getDescription() + ", Computer";
 	}
@@ -179,7 +179,7 @@ public:
 	}
 };
 
-class DriverAssistanceSystem : public CondimentDecorator { // Система помощи водителю
+class DriverAssistanceSystem : public CondimentDecorator { // РЎРёСЃС‚РµРјР° РїРѕРјРѕС‰Рё РІРѕРґРёС‚РµР»СЋ
 public:
 	DriverAssistanceSystem(dasAuto* wagon) {
 		std::cout << "Driver Assistance System constructor" << std::endl;
