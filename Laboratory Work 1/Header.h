@@ -1,9 +1,9 @@
-#pragma once // Чтобы Header использовался лишь 1 раз
+#pragma once // Р§С‚РѕР±С‹ Header РёСЃРїРѕР»СЊР·РѕРІР°Р»СЃСЏ Р»РёС€СЊ 1 СЂР°Р·
 #include <string>
 
 using namespace std;
 
-typedef struct { // Объявление структуры ФИО
+typedef struct { // РћР±СЉСЏРІР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Р¤РРћ
 	string f;
 	string i;
 	string o;
@@ -11,15 +11,15 @@ typedef struct { // Объявление структуры ФИО
 
 class Personal { 
 public:
-	FIO fio; // Включение структуры ФИО в класс
+	FIO fio; // Р’РєР»СЋС‡РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Р¤РРћ РІ РєР»Р°СЃСЃ
 	string position;
 	string branch;
 	double salary = 0;
 
-	Personal(){} // Конструктор
-	~Personal() {} // Деструктор
+	Personal(){} // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	~Personal() {} // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	bool operator > (const Personal&) const; // Прототипы функций перегрузки операторов
+	bool operator > (const Personal&) const; // РџСЂРѕС‚РѕС‚РёРїС‹ С„СѓРЅРєС†РёР№ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂРѕРІ
 	bool operator < (const Personal&) const;
 	bool operator >= (const Personal&) const;
 	bool operator <= (const Personal&) const;
@@ -27,6 +27,6 @@ public:
 	bool operator != (const Personal&) const;
 };
 
-Personal *insertionSort(Personal *prs, int n); // Прототип функции сортировки вставками
-Personal *shakerSorting(Personal *prs, int n); // Прототип функции шейкер-сортировки
-void display(Personal *prs, int n); // Прототип функции вывода массива на экран
+Personal *insertionSort(Personal *prs, int n); // РџСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё
+Personal *shakerSorting(Personal *prs, int n); // РџСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё С€РµР№РєРµСЂ-СЃРѕСЂС‚РёСЂРѕРІРєРё
+void display(Personal *prs, int n); // РџСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё РІС‹РІРѕРґР° РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ
