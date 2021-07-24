@@ -1,5 +1,5 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS //Для дурацкого strcpy
+#define _CRT_SECURE_NO_WARNINGS //Р”Р»СЏ РґСѓСЂР°С†РєРѕРіРѕ strcpy
 #include <vector>
 #include <string>
 #include <iostream>
@@ -22,7 +22,7 @@ protected:
 public:
 	digit_generator(int smth = 0) { len = smth; }
 	int length() { return len; }
-	string allowed_chars() { return "0123456789"; } // Строка цифр
+	string allowed_chars() { return "0123456789"; } // РЎС‚СЂРѕРєР° С†РёС„СЂ
 };
 
 class symbol_generator : public password_generator {
@@ -31,7 +31,7 @@ protected:
 public:
 	symbol_generator(int smth = 0) { len = smth; }
 	int length() { return len; }
-	string allowed_chars() { return "!@#$%^&*-_~"; } // Строка специальных символов
+	string allowed_chars() { return "!@#$%^&*-_~"; } // РЎС‚СЂРѕРєР° СЃРїРµС†РёР°Р»СЊРЅС‹С… СЃРёРјРІРѕР»РѕРІ
 };
 
 class upper_letter_generator : public password_generator {
@@ -40,7 +40,7 @@ protected:
 public:
 	upper_letter_generator(int smth = 0) { len = smth; }
 	int length() { return len; }
-	string allowed_chars() { return "QWERTYUIOPASDFGHJKLZXCVBNM"; } // Строка заглавных букв
+	string allowed_chars() { return "QWERTYUIOPASDFGHJKLZXCVBNM"; } // РЎС‚СЂРѕРєР° Р·Р°РіР»Р°РІРЅС‹С… Р±СѓРєРІ
 };
 
 class lower_letter_generator : public password_generator {
@@ -49,41 +49,41 @@ protected:
 public:
 	lower_letter_generator(int smth = 0) { len = smth; }
 	int length() { return len; }
-	string allowed_chars() { return "qwertyuiopasdfghjklzxcvbnm"; } // Строка строчных букв
+	string allowed_chars() { return "qwertyuiopasdfghjklzxcvbnm"; } // РЎС‚СЂРѕРєР° СЃС‚СЂРѕС‡РЅС‹С… Р±СѓРєРІ
 };
 
 class composit_password_generator : public password_generator
 {
 protected:
-	vector <password_generator*> criteria_list; // Массив для количества элементов (цифр, символов, букв разной индексации)
+	vector <password_generator*> criteria_list; // РњР°СЃСЃРёРІ РґР»СЏ РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ (С†РёС„СЂ, СЃРёРјРІРѕР»РѕРІ, Р±СѓРєРІ СЂР°Р·РЅРѕР№ РёРЅРґРµРєСЃР°С†РёРё)
 	int min_len;
 
 public:
-	composit_password_generator(int count) { min_len = count; } // Конструктор
+	composit_password_generator(int count) { min_len = count; } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 
 	void add(password_generator* temp) { criteria_list.push_back(temp); }
 
-	int length() { return min_len; } // Метод для нахождения минимальной необходимой длины пароля
+	int length() { return min_len; } // РњРµС‚РѕРґ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёРјР°Р»СЊРЅРѕР№ РЅРµРѕР±С…РѕРґРёРјРѕР№ РґР»РёРЅС‹ РїР°СЂРѕР»СЏ
 
 	string generate() {
 		string final_password = "";
 		int number = 0;
 		for (unsigned int i = 0; i < criteria_list.size(); i++) { number += criteria_list[i]->length(); }
 
-		if (number < min_len) { // Сравнение с минимально необходимой длиной. В случае неудачи выкидывает из программы.
+		if (number < min_len) { // РЎСЂР°РІРЅРµРЅРёРµ СЃ РјРёРЅРёРјР°Р»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕР№ РґР»РёРЅРѕР№. Р’ СЃР»СѓС‡Р°Рµ РЅРµСѓРґР°С‡Рё РІС‹РєРёРґС‹РІР°РµС‚ РёР· РїСЂРѕРіСЂР°РјРјС‹.
 			cout << "The length of the required password is greater than amount of used symbols, impossible to create such password" << endl;
 			exit(-4);
 		}
-		else { // Здесь создаётся финальный пароль как конкатенция строк. Длина строк соответственна необходимому количеству элементов
+		else { // Р—РґРµСЃСЊ СЃРѕР·РґР°С‘С‚СЃСЏ С„РёРЅР°Р»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ РєР°Рє РєРѕРЅРєР°С‚РµРЅС†РёСЏ СЃС‚СЂРѕРє. Р”Р»РёРЅР° СЃС‚СЂРѕРє СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅР° РЅРµРѕР±С…РѕРґРёРјРѕРјСѓ РєРѕР»РёС‡РµСЃС‚РІСѓ СЌР»РµРјРµРЅС‚РѕРІ
 			for (unsigned int i = 0; i < criteria_list.size(); i++) {
 				for (int j = 0; j < criteria_list[i]->length(); j++) {
 					final_password += criteria_list[i]->allowed_chars()[rand() % criteria_list[i]->allowed_chars().length()];
 				}
 			}
 
-			char *array = new char[final_password.length()]; // Создание массива для переноса строки туда
-			strcpy(array, final_password.c_str()); // Посимвольный перенос строки в массив
-			for (int i = final_password.length() - 1; i >= 1; i--) // Алгоритм перемешивания массива символов
+			char *array = new char[final_password.length()]; // РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° РґР»СЏ РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё С‚СѓРґР°
+			strcpy(array, final_password.c_str()); // РџРѕСЃРёРјРІРѕР»СЊРЅС‹Р№ РїРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРєРё РІ РјР°СЃСЃРёРІ
+			for (int i = final_password.length() - 1; i >= 1; i--) // РђР»РіРѕСЂРёС‚Рј РїРµСЂРµРјРµС€РёРІР°РЅРёСЏ РјР°СЃСЃРёРІР° СЃРёРјРІРѕР»РѕРІ
 			{
 				int j = rand() % (i + 1);
 
@@ -91,12 +91,12 @@ public:
 				array[j] = array[i];
 				array[i] = temp;
 			}
-			final_password = string(array); // Преобразование массива в строку обратно
+			final_password = string(array); // РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РјР°СЃСЃРёРІР° РІ СЃС‚СЂРѕРєСѓ РѕР±СЂР°С‚РЅРѕ
 			return final_password;
 		}
 	}
 
-	string allowed_chars() { // Функция, возвращающая строку, состояющую из ВСЕХ допустимых символов
+	string allowed_chars() { // Р¤СѓРЅРєС†РёСЏ, РІРѕР·РІСЂР°С‰Р°СЋС‰Р°СЏ СЃС‚СЂРѕРєСѓ, СЃРѕСЃС‚РѕСЏСЋС‰СѓСЋ РёР· Р’РЎР•РҐ РґРѕРїСѓСЃС‚РёРјС‹С… СЃРёРјРІРѕР»РѕРІ
 		string tmp = "";
 		for (unsigned int i = 0; i < criteria_list.size(); i++) {
 			tmp += criteria_list[i]->allowed_chars();
@@ -104,7 +104,7 @@ public:
 		return tmp;
 	}
 
-	~composit_password_generator() { // Деструктор
+	~composit_password_generator() { // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 		for (unsigned int i = 0; i < criteria_list.size(); i++) {
 			delete criteria_list[i];
 		}
