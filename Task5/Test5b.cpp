@@ -8,11 +8,11 @@ protected:
 	double data = 0;
 	char* name = new char[15];
 public:
-	virtual double Area() = 0; // Абстрактная функция 
+	virtual double Area() = 0; // РђР±СЃС‚СЂР°РєС‚РЅР°СЏ С„СѓРЅРєС†РёСЏ 
 	Shape() { 
 		char temp[] = "Shape";
 		strcpy(name, temp);
-		//Area(); //При использовании абстрактной ф-ии в конструкторе выбивает с ошибкой
+		//Area(); //РџСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё Р°Р±СЃС‚СЂР°РєС‚РЅРѕР№ С„-РёРё РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ РІС‹Р±РёРІР°РµС‚ СЃ РѕС€РёР±РєРѕР№
 	}
 	virtual Shape& operator =(const Shape& shape) { 
 		if (this == &shape)
@@ -29,7 +29,7 @@ class Circle : public Shape {
 protected:
 	double radius = 0;
 public:
-	double Area() { // Определение абстрактной функции для круга
+	double Area() { // РћРїСЂРµРґРµР»РµРЅРёРµ Р°Р±СЃС‚СЂР°РєС‚РЅРѕР№ С„СѓРЅРєС†РёРё РґР»СЏ РєСЂСѓРіР°
 		return 3.14 * radius * radius;
 	}
 	void Data(double r) { 
@@ -55,7 +55,7 @@ class Square : public Shape {
 protected:
 	double a = 0;
 public:
-	double Area() { // Определение абстрактной функции для квадрата
+	double Area() { // РћРїСЂРµРґРµР»РµРЅРёРµ Р°Р±СЃС‚СЂР°РєС‚РЅРѕР№ С„СѓРЅРєС†РёРё РґР»СЏ РєРІР°РґСЂР°С‚Р°
 		return a * a;
 	}
 	void Data(double b) {
@@ -83,7 +83,7 @@ protected:
 	double c = 0;
 
 public:
-	double Area() { // Определение абстрактной функции для треугольника
+	double Area() { // РћРїСЂРµРґРµР»РµРЅРёРµ Р°Р±СЃС‚СЂР°РєС‚РЅРѕР№ С„СѓРЅРєС†РёРё РґР»СЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 		double p = (a + b + c) / 2;
 		double S = sqrt(p * (p - a) * (p - b) * (p - c));
 		return S;
@@ -110,7 +110,7 @@ public:
 };
 
 int main() {
-	//Shape object; C++ использование объекта абстрактного типа класса не допускается: функцию Shape::Area является чистой виртуальной функцией
+	//Shape object; C++ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РѕР±СЉРµРєС‚Р° Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ С‚РёРїР° РєР»Р°СЃСЃР° РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ: С„СѓРЅРєС†РёСЋ Shape::Area СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃС‚РѕР№ РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ С„СѓРЅРєС†РёРµР№
 	Shape* examples[3]; 
 	examples[0] = new Circle(3); 
 	examples[1] = new Square(4);
