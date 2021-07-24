@@ -4,25 +4,25 @@ using namespace std;
 
 class Time
 {
-private: // Скрытые переменные класса
+private: // РЎРєСЂС‹С‚С‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР»Р°СЃСЃР°
     int hr;
     int min;
 
 public:
-    Time() { setTime(0, 0); } // Конструктор без параметров
-    Time(int a, int b) { setTime(a, b); } // Конструктор с параметрами, если их передают
+    Time() { setTime(0, 0); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    Time(int a, int b) { setTime(a, b); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚
 
-    void setTime(int a, int b) { // Сбор данных
+    void setTime(int a, int b) { // РЎР±РѕСЂ РґР°РЅРЅС‹С…
         hr = a;
         min = b;
     }
 
-    void getTime(int& k, int& l) { // Взятие данных
+    void getTime(int& k, int& l) { // Р’Р·СЏС‚РёРµ РґР°РЅРЅС‹С…
         k = hr;
         l = min;
     }
 
-    void printTime() { // Вывод данных
+    void printTime() { // Р’С‹РІРѕРґ РґР°РЅРЅС‹С…
         cout << "Time: " << hr << ":" << min;
     }
 };
@@ -36,8 +36,8 @@ private:
     int year;
 
 public:
-    Date() { setDate(0, 0, 0); } // Конструктор без параметров
-    Date(int a, int b, int c) { // Конструктор с параметрами, если их передают
+    Date() { setDate(0, 0, 0); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    Date(int a, int b, int c) { // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚
         setDate(a, b, c);
     }
 
@@ -53,25 +53,25 @@ public:
         z = year;
     }
 
-    void printDate() { cout << "Date: " << day << "." << month << "." << year; } // Вывод на экран
+    void printDate() { cout << "Date: " << day << "." << month << "." << year; } // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 };
 
-class Event : private Time, Date { // Закрытое наследование
+class Event : private Time, Date { // Р—Р°РєСЂС‹С‚РѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ
 private:
     string myeventName;
 
 public:
     Event() : Time(), Date() { setEvent(""); }
-    explicit Event(string str, Date date, Time time) : Time(time), Date(date) { setEvent(str); } // Конструктор с параметрами, если их передают 
+    explicit Event(string str, Date date, Time time) : Time(time), Date(date) { setEvent(str); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚ 
 
     void setEvent(string str) { myeventName = str; }
 
-    void printEvent() { // Вывод на экран
+    void printEvent() { // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
         cout << "Event name is " << myeventName;
         cout << endl;
-        printDate(); // Использование наследованной реализации из Date
+        printDate(); // РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РЅР°СЃР»РµРґРѕРІР°РЅРЅРѕР№ СЂРµР°Р»РёР·Р°С†РёРё РёР· Date
         cout << endl;
-        printTime(); // Использование наследованноой реализации из Time 
+        printTime(); // РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РЅР°СЃР»РµРґРѕРІР°РЅРЅРѕРѕР№ СЂРµР°Р»РёР·Р°С†РёРё РёР· Time 
         cout << endl;
     }
 };
@@ -80,9 +80,9 @@ int main() {
     int hours, minutes;
     Time t(21, 40);
     Date d(27, 05, 2018);
-    Event e("Emergenza 2018", d, t); // Создаем событие с такими данными
-    e.printEvent(); // Чуть измененный вывод
-    t.getTime(hours, minutes); // Проверка работы обращения к приватным данным
+    Event e("Emergenza 2018", d, t); // РЎРѕР·РґР°РµРј СЃРѕР±С‹С‚РёРµ СЃ С‚Р°РєРёРјРё РґР°РЅРЅС‹РјРё
+    e.printEvent(); // Р§СѓС‚СЊ РёР·РјРµРЅРµРЅРЅС‹Р№ РІС‹РІРѕРґ
+    t.getTime(hours, minutes); // РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚С‹ РѕР±СЂР°С‰РµРЅРёСЏ Рє РїСЂРёРІР°С‚РЅС‹Рј РґР°РЅРЅС‹Рј
     cout << "Private data is " << hours << " and " << minutes << endl;
     return 0;
 }
