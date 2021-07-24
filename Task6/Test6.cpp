@@ -4,25 +4,25 @@ using namespace std;
 
 class Time
 {
-private: // Скрытые переменные класса
+private: // РЎРєСЂС‹С‚С‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР»Р°СЃСЃР°
     int hr;
     int min;
 
 public:
-    Time() { setTime(0, 0); } // Конструктор без параметров по умолчанию
-    Time(int a, int b) { setTime(a, b); } // Конструктор с параметрами, если их передают
+    Time() { setTime(0, 0); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+    Time(int a, int b) { setTime(a, b); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚
 
-    void setTime(int a, int b) { // Сбор данных
+    void setTime(int a, int b) { // РЎР±РѕСЂ РґР°РЅРЅС‹С…
         hr = a;
         min = b;
     }
 
-    void getTime(int& k, int& l) { // Взятие данных
+    void getTime(int& k, int& l) { // Р’Р·СЏС‚РёРµ РґР°РЅРЅС‹С…
         k = hr;
         l = min;
     }
 
-    void printTime() { // Вывод данных
+    void printTime() { // Р’С‹РІРѕРґ РґР°РЅРЅС‹С…
         cout << hr << ":" << min;
     }
 };
@@ -36,8 +36,8 @@ private:
     int year;
 
 public:
-    Date() { setDate(0, 0, 0); } // Конструктор без параметров
-    Date(int a, int b, int c) { // Конструктор с параметрами, если их передают
+    Date() { setDate(0, 0, 0); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    Date(int a, int b, int c) { // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚
         setDate(a, b, c);
     }
 
@@ -53,28 +53,28 @@ public:
         z = year;
     }
 
-    void printDate() { cout  << day << "." << month << "." << year; } // Вывод на экран
+    void printDate() { cout  << day << "." << month << "." << year; } // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 };
 
 class Event {
-protected: // Включение классов Time и Date
+protected: // Р’РєР»СЋС‡РµРЅРёРµ РєР»Р°СЃСЃРѕРІ Time Рё Date
     Time mytime;
     Date mydate;
 
 private:
-    string myeventName; // Название события
+    string myeventName; // РќР°Р·РІР°РЅРёРµ СЃРѕР±С‹С‚РёСЏ
 
 public:
-    Event() { setEvent("", Time(0, 0), Date(0, 0, 0)); } // "" - пустое название в конструкторе по умолчанию
-    Event(string event, Time time, Date date) { setEvent(event, time, date); } // Конструктор с параметрами, если их передают
+    Event() { setEvent("", Time(0, 0), Date(0, 0, 0)); } // "" - РїСѓСЃС‚РѕРµ РЅР°Р·РІР°РЅРёРµ РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+    Event(string event, Time time, Date date) { setEvent(event, time, date); } // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё, РµСЃР»Рё РёС… РїРµСЂРµРґР°СЋС‚
 
-    void setEvent(string str, Time time, Date date) { // Метод установки данных о событии
+    void setEvent(string str, Time time, Date date) { // РњРµС‚РѕРґ СѓСЃС‚Р°РЅРѕРІРєРё РґР°РЅРЅС‹С… Рѕ СЃРѕР±С‹С‚РёРё
         myeventName = str;
         mytime = time;
         mydate = date;
     }
 
-    void printEvent() { // Вывод на экран
+    void printEvent() { // Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
         cout << "Event " << myeventName;
         cout << " will be held on ";
         mydate.printDate();
@@ -85,15 +85,15 @@ public:
 
 int main() {
     int d, m, y;
-    Time time = Time(21, 40); // Инициализируем время
-    Date date = Date(12, 12, 12); // Инициализируем дату
-    string str; // Переменная для хранения названия ивента
+    Time time = Time(21, 40); // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РІСЂРµРјСЏ
+    Date date = Date(12, 12, 12); // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РґР°С‚Сѓ
+    string str; // РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РЅР°Р·РІР°РЅРёСЏ РёРІРµРЅС‚Р°
     cout << "Enter the name of event: ";
     getline(cin, str);
     cout << endl;
-    Event event = Event(str, time, date); // Создаем ивент используя данные
-    event.printEvent(); // Вывод данных об ивенте на экран
-    date.getDate(d, m, y); // Проверка обращения к приватным данным класса
+    Event event = Event(str, time, date); // РЎРѕР·РґР°РµРј РёРІРµРЅС‚ РёСЃРїРѕР»СЊР·СѓСЏ РґР°РЅРЅС‹Рµ
+    event.printEvent(); // Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РѕР± РёРІРµРЅС‚Рµ РЅР° СЌРєСЂР°РЅ
+    date.getDate(d, m, y); // РџСЂРѕРІРµСЂРєР° РѕР±СЂР°С‰РµРЅРёСЏ Рє РїСЂРёРІР°С‚РЅС‹Рј РґР°РЅРЅС‹Рј РєР»Р°СЃСЃР°
     cout << endl << "Private date: " << d << ", " << m << " and " << y << endl;
     return 0;
 }
