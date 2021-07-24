@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//using namespace std;
 
 class DonBallon 
 {
@@ -16,17 +15,17 @@ public:
     };
 
     ~DonBallon() {};
-    double GetPressure(int temp) // Ïîëó÷èòü äàâëåíèå
+    double GetPressure(int temp) // ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð´Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ
     {
         return ((8.31 * weight * temp) / (molar * volume));
     }
 
-    double AmountOfMatter() // Ìîëÿðíàÿ ìàññà âåùåñòâà
+    double AmountOfMatter() // ÐœÐ¾Ð»ÑÑ€Ð½Ð°Ñ Ð¼Ð°ÑÑÐ° Ð²ÐµÑ‰ÐµÑÑ‚Ð²Ð°
     {
         return (weight / molar);
     }
 
-    std::string ToString() // Ïðèâåäåíèå ê ñòðîêàì
+    std::string ToString() // ÐŸÑ€Ð¸Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ðº ÑÑ‚Ñ€Ð¾ÐºÐ°Ð¼
     {
         std::string data;
         data = "volume = " + std::to_string(volume) + "\nweight = " + std::to_string(weight) + "\nmolar = " + std::to_string(molar);
@@ -34,16 +33,16 @@ public:
     }
 };
 
-class Tank // Èíòåðôåéñ áàëëîíîâ
+class Tank // Ð˜Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹Ñ Ð±Ð°Ð»Ð»Ð¾Ð½Ð¾Ð²
 {
 public:
-    virtual ~Tank() {} // Âèðòóàëüíûé äåñòðóêòîð
+    virtual ~Tank() {} // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð´ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
     virtual double CalculateDP(int T0, int dT) = 0;
     virtual void ModifMass(double dM) = 0;
     virtual std::string getData() = 0;
 };
 
-class Adapter : public Tank // Àäàïòåð
+class Adapter : public Tank // ÐÐ´Ð°Ð¿Ñ‚ÐµÑ€
 {
 protected:
     DonBallon* one_ballon;
@@ -51,12 +50,12 @@ public:
     Adapter(DonBallon* ballon) : one_ballon(ballon) {}
     ~Adapter() { delete one_ballon; }
 
-    double CalculateDP(int T0, int dT) { // Çà÷åì çäåñü âîîáùå íà÷àëüíîå Ò0? ß âåäü äîëæåí áûë ó÷èòü ôèçèêó, ïîýòîìó
-        double mol = one_ballon->AmountOfMatter(); // ìîãó ñêàçàòü, ÷òî èçìåíåíèå äàâëåíèÿ ïðîïîðöèîíàëüíî èçìåíåíèþ òåìïåðàòóðû
-        return ((mol * 8.31 * (T0 + dT) - mol * 8.31 * T0 )/ one_ballon->volume); // Äà è èç ýòîé ôîðìóëû ïðåêðàñíî âèäíî, êàê ñîêðàùàþòñÿ ñëàãàåìûå ñ Ò0
-    } // Íî ðàç ïî çàäàíèþ íàäî, ÿ ñäåëàþ...
+    double CalculateDP(int T0, int dT) { // Ð—Ð°Ñ‡ÐµÐ¼ Ð·Ð´ÐµÑÑŒ Ð²Ð¾Ð¾Ð±Ñ‰Ðµ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð¢0? Ð¯ Ð²ÐµÐ´ÑŒ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ð» ÑƒÑ‡Ð¸Ñ‚ÑŒ Ñ„Ð¸Ð·Ð¸ÐºÑƒ, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ
+        double mol = one_ballon->AmountOfMatter(); // Ð¼Ð¾Ð³Ñƒ ÑÐºÐ°Ð·Ð°Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð´Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ð¿Ð¾Ñ€Ñ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸ÑŽ Ñ‚ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ñ‹
+        return ((mol * 8.31 * (T0 + dT) - mol * 8.31 * T0 )/ one_ballon->volume); // Ð”Ð° Ð¸ Ð¸Ð· ÑÑ‚Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼ÑƒÐ»Ñ‹ Ð¿Ñ€ÐµÐºÑ€Ð°ÑÐ½Ð¾ Ð²Ð¸Ð´Ð½Ð¾, ÐºÐ°Ðº ÑÐ¾ÐºÑ€Ð°Ñ‰Ð°ÑŽÑ‚ÑÑ ÑÐ»Ð°Ð³Ð°ÐµÐ¼Ñ‹Ðµ Ñ Ð¢0
+    } // ÐÐ¾ Ñ€Ð°Ð· Ð¿Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸ÑŽ Ð½Ð°Ð´Ð¾, Ñ ÑÐ´ÐµÐ»Ð°ÑŽ...
 
-    void ModifMass(double dM) // Èçìåíèòü ìàññó
+    void ModifMass(double dM) // Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¼Ð°ÑÑÑƒ
     {
         one_ballon->weight += dM;
     }
