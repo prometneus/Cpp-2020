@@ -1,41 +1,41 @@
-#include <string> // Для строк
-#include <iostream> // Для ввода-вывода
-#include <vector> // Для контейнера вектор
-#include <algorithm> // Для сортировки
+#include <string> // Р”Р»СЏ СЃС‚СЂРѕРє
+#include <iostream> // Р”Р»СЏ РІРІРѕРґР°-РІС‹РІРѕРґР°
+#include <vector> // Р”Р»СЏ РєРѕРЅС‚РµР№РЅРµСЂР° РІРµРєС‚РѕСЂ
+#include <algorithm> // Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 
-std::vector <std::string> input(std::vector <std::string> numbers, int amount) { // Создание функции ввода количества элементов в векторе
+std::vector <std::string> input(std::vector <std::string> numbers, int amount) { // РЎРѕР·РґР°РЅРёРµ С„СѓРЅРєС†РёРё РІРІРѕРґР° РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РІ РІРµРєС‚РѕСЂРµ
 	std::string temp;
-	std::cin.ignore(); // Игнор пробела
-	for (int i = 0; i < amount; i++) { // Цикл по вводу номеров исходя из введенного количества
+	std::cin.ignore(); // РРіРЅРѕСЂ РїСЂРѕР±РµР»Р°
+	for (int i = 0; i < amount; i++) { // Р¦РёРєР» РїРѕ РІРІРѕРґСѓ РЅРѕРјРµСЂРѕРІ РёСЃС…РѕРґСЏ РёР· РІРІРµРґРµРЅРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР°
 		std::cout << "Enter the phone number" << std::endl;
 		getline(std::cin, temp);
-		numbers.push_back(temp); // Помещение строки в вектор
+		numbers.push_back(temp); // РџРѕРјРµС‰РµРЅРёРµ СЃС‚СЂРѕРєРё РІ РІРµРєС‚РѕСЂ
 	}
 	return numbers;
 }
 
 std::vector <std::string> correcting(std::vector <std::string> numbers, int amount) {
-	int counter; // Счетчик для поиска пробелов
+	int counter; // РЎС‡РµС‚С‡РёРє РґР»СЏ РїРѕРёСЃРєР° РїСЂРѕР±РµР»РѕРІ
 	for (int i = 0; i < amount; i++) {
-		counter = numbers[i].find(" "); // Поиск пробелов, возвращает кол-во символов перед найденным пробелом
-		while (counter != -1) { // Если не нашлось пробелов, .find возвращает -1
-			numbers[i].erase(counter, 1);// Стирает часть строки с позиции counter размером 1
-			counter = numbers[i].find(" "); //Новый поиск пробелов
+		counter = numbers[i].find(" "); // РџРѕРёСЃРє РїСЂРѕР±РµР»РѕРІ, РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ РїРµСЂРµРґ РЅР°Р№РґРµРЅРЅС‹Рј РїСЂРѕР±РµР»РѕРј
+		while (counter != -1) { // Р•СЃР»Рё РЅРµ РЅР°С€Р»РѕСЃСЊ РїСЂРѕР±РµР»РѕРІ, .find РІРѕР·РІСЂР°С‰Р°РµС‚ -1
+			numbers[i].erase(counter, 1);// РЎС‚РёСЂР°РµС‚ С‡Р°СЃС‚СЊ СЃС‚СЂРѕРєРё СЃ РїРѕР·РёС†РёРё counter СЂР°Р·РјРµСЂРѕРј 1
+			counter = numbers[i].find(" "); //РќРѕРІС‹Р№ РїРѕРёСЃРє РїСЂРѕР±РµР»РѕРІ
 		}
-		if (numbers[i].length() == 10) // Если всего 10 символов, то нужно добавить +7 в начало
+		if (numbers[i].length() == 10) // Р•СЃР»Рё РІСЃРµРіРѕ 10 СЃРёРјРІРѕР»РѕРІ, С‚Рѕ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ +7 РІ РЅР°С‡Р°Р»Рѕ
 			numbers[i].insert(0, "+7");
-		if (numbers[i].length() == 11) // Если символов 11, то в начале стоит либо 7, либо 8
-			if (numbers[i][0] == '8') { // Если стоит 8
-				numbers[i][0] = '7'; // То заменяем 8 на 7
-				numbers[i].insert(0, "+"); // И добавляем + в начало
+		if (numbers[i].length() == 11) // Р•СЃР»Рё СЃРёРјРІРѕР»РѕРІ 11, С‚Рѕ РІ РЅР°С‡Р°Р»Рµ СЃС‚РѕРёС‚ Р»РёР±Рѕ 7, Р»РёР±Рѕ 8
+			if (numbers[i][0] == '8') { // Р•СЃР»Рё СЃС‚РѕРёС‚ 8
+				numbers[i][0] = '7'; // РўРѕ Р·Р°РјРµРЅСЏРµРј 8 РЅР° 7
+				numbers[i].insert(0, "+"); // Р РґРѕР±Р°РІР»СЏРµРј + РІ РЅР°С‡Р°Р»Рѕ
 			}
-			else numbers[i].insert(0, "+"); // Если стоит 7, то просто добавляем +
+			else numbers[i].insert(0, "+"); // Р•СЃР»Рё СЃС‚РѕРёС‚ 7, С‚Рѕ РїСЂРѕСЃС‚Рѕ РґРѕР±Р°РІР»СЏРµРј +
 	}
 	return numbers;
 }
 
-void containingData(std::vector <std::string> numbers, int amount) {// Функция вывода на экран измененных номеров
-	std::sort(numbers.begin(), numbers.end()); // Сортируем номера для вывода в порядке возрастания встроенной Быстрой сортировкой
+void containingData(std::vector <std::string> numbers, int amount) { // Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ РёР·РјРµРЅРµРЅРЅС‹С… РЅРѕРјРµСЂРѕРІ
+	std::sort(numbers.begin(), numbers.end()); // РЎРѕСЂС‚РёСЂСѓРµРј РЅРѕРјРµСЂР° РґР»СЏ РІС‹РІРѕРґР° РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ РІСЃС‚СЂРѕРµРЅРЅРѕР№ Р‘С‹СЃС‚СЂРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
 	for (int i = 0; i < amount; i++) {
 		std::cout << numbers[i] << std::endl;
 	}
@@ -47,12 +47,12 @@ int main() {
 	int amount;
 	std::cout << "Enter the amount of numbers to add:" << std::endl;
 	std::cin >> amount;
-	if (amount == 0) { // Если введено количество номеров 0
-		"Written that no numbers need to enter"; // Вывести сообщение об этом
-		return 0; // И прекратить работу программы
+	if (amount == 0) { // Р•СЃР»Рё РІРІРµРґРµРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРјРµСЂРѕРІ 0
+		"Written that no numbers need to enter"; // Р’С‹РІРµСЃС‚Рё СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СЌС‚РѕРј
+		return 0; // Р РїСЂРµРєСЂР°С‚РёС‚СЊ СЂР°Р±РѕС‚Сѓ РїСЂРѕРіСЂР°РјРјС‹
 	}
-	numbers = input(numbers, amount); // Ввод
-	done = correcting(numbers, amount); // Изменение
+	numbers = input(numbers, amount); // Р’РІРѕРґ
+	done = correcting(numbers, amount); // РР·РјРµРЅРµРЅРёРµ
 	std::cout << "Changed numbers" << std::endl;
-	containingData(done, amount); // Вывод измененных
+	containingData(done, amount); // Р’С‹РІРѕРґ РёР·РјРµРЅРµРЅРЅС‹С…
 }
